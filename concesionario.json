@@ -1,0 +1,20 @@
+{
+  "carro": [
+    {
+      "modelo": "Sedán",
+      "color": "Azul",
+      "kilometraje": 50000,
+      "precio": 20000
+    }
+  ],
+  "moto": [
+    {
+      "modelo": "Deportiva",
+      "color": "Rojo",
+      "kilometraje": 10000,
+      "precio": 8000,
+      "cilindraje": "250cc",
+      "nuemroVelocidad": 6
+    }
+  ]
+}
