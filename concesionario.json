@@ -1,6 +1,7 @@
 {
   "carro": [
     {
+      "id": 0,
       "modelo": "Sedán",
       "color": "Azul",
       "kilometraje": 50000,
@@ -9,12 +10,22 @@
   ],
   "moto": [
     {
+      "id": 0,
       "modelo": "Deportiva",
-      "color": "Rojo",
+      "color": "amarillo",
       "kilometraje": 10000,
       "precio": 8000,
       "cilindraje": "250cc",
       "nuemroVelocidad": 6
+    },
+    {
+      "id": 1,
+      "modelo": "clasica",
+      "color": "amarillo",
+      "kilometraje": 0,
+      "precio": 50000,
+      "cilindraje": "350cc",
+      "nuemroVelocidad": 5
     }
   ]
 }
