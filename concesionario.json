@@ -6,7 +6,6 @@
       "color": "Azul",
       "kilometraje": 50000,
       "precio": 20000,
-
       "fechaRegistro": "2023-12-14T08:00:00.000Z"
     }
   ],
@@ -14,7 +13,7 @@
     {
       "id": 0,
       "modelo": "MT-09",
-      "color": "rosado",
+      "color": "verde",
       "kilometraje": 10000,
       "precio": 8000,
       "cilindraje": "250cc",

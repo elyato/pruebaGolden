@@ -41,11 +41,19 @@ const useFetchMotoData = () => {
     {
       onSuccess: () => {
         queryClient.invalidateQueries("motoData");
-        showAlert("¡El vehículo se agrego correctamente!");
       },
     }
   );
 
+  const addMoto = async (newMotoData: Omit<Moto, "id">) => {
+    try {
+      await addMotoMutation.mutateAsync(newMotoData);
+      return true;
+    } catch (error) {
+      console.error("Error al agregar la moto:", error);
+      return false;
+    }
+  };
   const updateMoto = async (motoId: number, newData: Partial<Moto>) => {
     try {
       await updateMotoMutation.mutateAsync({ motoId, newData });
@@ -54,13 +62,6 @@ const useFetchMotoData = () => {
     }
   };
 
-  const addMoto = async (newMotoData: Omit<Moto, "id">) => {
-    try {
-      await addMotoMutation.mutateAsync(newMotoData);
-    } catch (error) {
-      console.error("Error al agregar la moto:", error);
-    }
-  };
   const deleteMotoMutation = useMutation(
     (motoId: number) => axios.delete(`${apiMotoUrl}/${motoId}`),
     {

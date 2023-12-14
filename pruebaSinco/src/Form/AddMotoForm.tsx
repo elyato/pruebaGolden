@@ -7,13 +7,14 @@ import {
   CardContent,
   IconButton,
   Box,
+  Alert,
 } from "@mui/material";
 import useFetchMotoData from "../hook/useMoto";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Link } from "react-router-dom";
 const AddMotoForm = () => {
   const { addMoto } = useFetchMotoData();
-
+  const [IsActualizo, setIsActualizo] = useState(false);
   const [newMoto, setNewMoto] = useState({
     modelo: "",
     color: "",
@@ -30,8 +31,11 @@ const AddMotoForm = () => {
     }));
   };
 
-  const handleAddMoto = () => {
-    addMoto(newMoto);
+  const handleAddMoto = async () => {
+    const adMoto = await addMoto(newMoto);
+    setIsActualizo(adMoto);
+    debugger;
+    console.log(adMoto);
 
     setNewMoto({
       modelo: "",
@@ -104,6 +108,7 @@ const AddMotoForm = () => {
           Agregar Moto
         </Button>
       </CardContent>
+      {IsActualizo && <Alert title="Se agrego correctamente" />}
     </Card>
   );
 };
