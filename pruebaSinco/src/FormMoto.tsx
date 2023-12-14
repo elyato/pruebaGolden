@@ -1,13 +1,6 @@
 import { useState } from "react";
 import useFetchMotoData from "./hook/useMoto";
-import {
-  Card,
-  CardContent,
-  Typography,
-  Button,
-  Stack,
-  CardMedia,
-} from "@mui/material";
+import { Card, CardContent, Typography, Button, Stack } from "@mui/material";
 import { DrawerInfo } from "./Components/DrawerInfo";
 import InfoIcon from "@mui/icons-material/Info";
 
