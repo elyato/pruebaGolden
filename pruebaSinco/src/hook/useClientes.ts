@@ -13,7 +13,7 @@ export const useClientes = () => {
     data: clienteData = [],
     isLoading: loading,
     error,
-  } = useQuery<Cliente[]>("motoData", async () => {
+  } = useQuery<Cliente[]>("clienteData", async () => {
     const response = await axios.get(apiClientes);
     return response.data;
   });

@@ -1,15 +1,6 @@
 import { Drawer, List, ListItem, Typography, Chip } from "@mui/material";
+import { Moto } from "../interfaces/DataMoto";
 
-interface Moto {
-  id: number;
-  modelo: string;
-  color: string;
-  kilometraje: number;
-  precio: number;
-  cilindraje?: string;
-  numeroVelocidad?: number;
-  image: string;
-}
 
 interface DrawerInfoProps {
   handleCloseDrawer: () => void;

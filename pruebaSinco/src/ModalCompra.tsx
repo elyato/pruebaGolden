@@ -1,6 +1,7 @@
 import { Box, Button, ListItem, Modal, TextField } from "@mui/material";
 import { Dispatch, SetStateAction, useState } from "react";
 import useFetchMotoData from "./hook/useMoto";
+import { Moto } from "./interfaces/DataMoto";
 
 interface porps {
   selectedMoto: Moto | null;

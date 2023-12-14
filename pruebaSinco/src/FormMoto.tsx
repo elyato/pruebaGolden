@@ -82,7 +82,7 @@ export const FormMoto = () => {
               sx={{ width: "200px" }}
               component="img"
               alt=""
-              image={moto.image} // Asegúrate de que moto.image sea una URL válida
+              image={moto.image}
             />{" "}
             <Button
               size="small"
