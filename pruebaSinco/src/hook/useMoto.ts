@@ -19,8 +19,6 @@ const useFetchMotoData = () => {
   const [error, setError] = useState(null);
   const apiMotoUrl = "http://localhost:3000/moto";
 
-  
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -38,13 +36,13 @@ const useFetchMotoData = () => {
     fetchData();
   }, []);
 
-  const updateColor = async (motoId: number, newColor: string) => {
+  const updateMoto = async (motoId: number, newData: Partial<Moto>) => {
     try {
-      await axios.patch(`${apiMotoUrl}/${motoId}`, { color: newColor });
+      await axios.patch(`${apiMotoUrl}/${motoId}`, newData);
 
       setMotoData((prevData) =>
         prevData.map((moto) =>
-          moto.id === motoId ? { ...moto, color: newColor } : moto
+          moto.id === motoId ? { ...moto, ...newData } : moto
         )
       );
     } catch (error) {
@@ -52,7 +50,17 @@ const useFetchMotoData = () => {
     }
   };
 
-  return { motoData, loading, error, updateColor};
+  const addMoto = async (newMotoData: Omit<Moto, "id">) => {
+    try {
+      const response = await axios.post(apiMotoUrl, newMotoData);
+
+      setMotoData((prevData) => [...prevData, response.data]);
+    } catch (error) {
+      console.error("Error al agregar la moto:", error);
+    }
+  };
+
+  return { motoData, loading, error, updateMoto, addMoto };
 };
 
 export default useFetchMotoData;

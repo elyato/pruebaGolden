@@ -1,37 +1,73 @@
+import { useState } from "react";
 import useFetchMotoData from "./hook/useMoto";
-import { Card, CardContent, Typography, Button } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  Typography,
+  Button,
+  Stack,
+  CardMedia,
+} from "@mui/material";
+import { DrawerInfo } from "./Components/DrawerInfo";
+import InfoIcon from "@mui/icons-material/Info";
 
 export const FormMoto = () => {
   const data = useFetchMotoData();
+  const { motoData, updateMoto } = data;
 
-  const { motoData, updateColor } = data;
+  const [selectedMoto, setSelectedMoto] = useState(null);
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
-  const handleUpdateColor = async (motoId: number, newColor: string) => {
-    await updateColor(motoId, newColor);
+  const handleUpdateField = async (
+    motoId: number,
+    fieldName: string,
+    newValue: any
+  ) => {
+    await updateMoto(motoId, { [fieldName]: newValue });
   };
-  console.log();
+  console.log(motoData);
+
+  const handleOpenDrawer = (moto) => {
+    setSelectedMoto(moto);
+    setDrawerOpen(true);
+  };
+
+  const handleCloseDrawer = () => {
+    setSelectedMoto(null);
+    setDrawerOpen(false);
+  };
 
   return (
-    <Card>
-      <CardContent>
-        <Typography>
-          Bienvenido a la sección de motos, elige nuestro catálogo
-        </Typography>
-        
-        {motoData.map((moto, index) => (
-          <div key={index}>
+    <Stack width="99vw">
+      <Typography variant="h5">
+        Bienvenido a la sección de motos, elige nuestro catálogo
+      </Typography>
+      <img src="/assets/image/MT09-2022-COLOR_AZUL.jpg" alt="" />
+
+      {motoData.map((moto, index) => (
+        <Card key={index} sx={{ marginTop: "16px", height: 200 }}>
+          <CardContent>
             <Typography variant="body1">Modelo: {moto.modelo}</Typography>
-            <Typography variant="body1">Color: {moto.color}</Typography>
+
             <Button
+              size="small"
               variant="contained"
               color="primary"
-              onClick={() => handleUpdateColor(moto.id, "amarillo")}
+              onClick={() => handleOpenDrawer(moto)}
+              startIcon={<InfoIcon />}
             >
-              Actualizar Color
+              Ver detalle
             </Button>
-          </div>
-        ))}
-      </CardContent>
-    </Card>
+            <Button color="success">Vender</Button>
+          </CardContent>
+        </Card>
+      ))}
+      <DrawerInfo
+        drawerOpen={drawerOpen}
+        handleCloseDrawer={handleCloseDrawer}
+        selectedMoto={selectedMoto}
+        handleUpdateMoto={handleUpdateField}
+      />
+    </Stack>
   );
 };

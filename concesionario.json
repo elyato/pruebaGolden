@@ -5,27 +5,58 @@
       "modelo": "Sedán",
       "color": "Azul",
       "kilometraje": 50000,
-      "precio": 20000
+      "precio": 20000,
+      "image":"pruebaSinco/src/assets/image/MT09-2022-COLOR_AZUL.jpg",
+      "fechaRegistro": "2023-12-14T08:00:00.000Z"
     }
   ],
   "moto": [
     {
       "id": 0,
-      "modelo": "Deportiva",
-      "color": "amarillo",
+      "modelo": "MT-09",
+      "color": "rosado",
       "kilometraje": 10000,
       "precio": 8000,
       "cilindraje": "250cc",
-      "nuemroVelocidad": 6
+      "numeroVelocidad": 6,
+      "fechaRegistro": "2023-12-14T09:30:00.000Z"
     },
     {
       "id": 1,
-      "modelo": "clasica",
+      "modelo": "GSX-S 750",
       "color": "amarillo",
       "kilometraje": 0,
       "precio": 50000,
       "cilindraje": "350cc",
-      "nuemroVelocidad": 5
+      "numeroVelocidad": 5,
+      "fechaRegistro": "2023-12-14T10:45:00.000Z"
+    },
+    {
+      "modelo": "boxer",
+      "color": "rojo",
+      "kilometraje": 0,
+      "precio": "2000",
+      "cilindraje": "100cc",
+      "nuemroVelocidad": "4",
+      "id": 2
+    },
+    {
+      "modelo": "ns200",
+      "color": "roja",
+      "kilometraje": "0",
+      "precio": "2000",
+      "cilindraje": "200cc",
+      "nuemroVelocidad": "3",
+      "id": 3
+    },
+    {
+      "modelo": "panigalev4",
+      "color": "roja",
+      "kilometraje": 0,
+      "precio": "100000",
+      "cilindraje": "1000cc",
+      "nuemroVelocidad": "6",
+      "id": 4
     }
   ]
 }
