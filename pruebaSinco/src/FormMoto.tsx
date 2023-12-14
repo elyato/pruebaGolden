@@ -1,9 +1,20 @@
 import { useState } from "react";
 import useFetchMotoData from "./hook/useMoto";
-import { Card, CardContent, Typography, Button, Stack } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  Typography,
+  Button,
+  Stack,
+  IconButton,
+  Box,
+  CardMedia,
+} from "@mui/material";
 import { DrawerInfo } from "./Components/DrawerInfo";
 import InfoIcon from "@mui/icons-material/Info";
 import { ModalCompra } from "./ModalCompra";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { Link } from "react-router-dom";
 
 export const FormMoto = () => {
   const data = useFetchMotoData();
@@ -47,16 +58,32 @@ export const FormMoto = () => {
 
   return (
     <Stack width="99vw">
-      <Typography variant="h5">
-        Bienvenido a la sección de motos, elige nuestro catálogo
-      </Typography>
+      <Box
+        width="40%"
+        display="flex"
+        justifyContent="space-between"
+        textAlign="end"
+        alignItems="center"
+        margin={1}
+      >
+        <IconButton component={Link} to="/">
+          <ArrowBackIcon />
+        </IconButton>
+        <Typography variant="h5">
+          Bienvenido a la sección de motos, elige nuestro catálogo
+        </Typography>
+      </Box>
 
       {motoData.map((moto, index) => (
-        <Card key={index} sx={{ marginTop: "16px", height: 200 }}>
+        <Card key={index} sx={{ marginTop: "16px" }}>
           <CardContent>
-            <img src={moto.image} alt="" />
             <Typography variant="body1">Modelo: {moto.modelo}</Typography>
-
+            <CardMedia
+              sx={{ width: "200px" }}
+              component="img"
+              alt=""
+              image={moto.image} // Asegúrate de que moto.image sea una URL válida
+            />{" "}
             <Button
               size="small"
               variant="contained"
@@ -76,7 +103,6 @@ export const FormMoto = () => {
         drawerOpen={drawerOpen}
         handleCloseDrawer={handleCloseDrawer}
         selectedMoto={selectedMoto}
-        handleUpdateMoto={handleUpdateField}
       />
       <ModalCompra
         modalOpen={modalOpen}
@@ -85,6 +111,8 @@ export const FormMoto = () => {
         setTextField2Value={setTextField2Value}
         textField1Value={textField1Value}
         textField2Value={textField2Value}
+        handleUpdateMoto={handleUpdateField}
+        selectedMoto={selectedMoto}
       />
     </Stack>
   );

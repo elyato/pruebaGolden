@@ -47,8 +47,10 @@ const useFetchMotoData = () => {
 
   const addMoto = async (newMotoData: Omit<Moto, "id">) => {
     try {
-      await addMotoMutation.mutateAsync(newMotoData);
-      return true;
+      if (motoData.length < 11) {
+        await addMotoMutation.mutateAsync(newMotoData);
+        return true;
+      }
     } catch (error) {
       console.error("Error al agregar la moto:", error);
       return false;
