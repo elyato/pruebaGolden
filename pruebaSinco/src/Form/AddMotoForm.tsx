@@ -3,12 +3,14 @@ import {
   TextField,
   Button,
   Typography,
-  Box,
   Card,
   CardContent,
+  IconButton,
+  Box,
 } from "@mui/material";
 import useFetchMotoData from "../hook/useMoto";
-
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { Link } from "react-router-dom";
 const AddMotoForm = () => {
   const { addMoto } = useFetchMotoData();
 
@@ -42,9 +44,14 @@ const AddMotoForm = () => {
   };
 
   return (
-    <Card sx={{ width: 600 }}>
+    <Card sx={{ width: "99vw", height: "95vh" }}>
       <CardContent sx={{ gap: 2, display: "flex", flexDirection: "column" }}>
-        <Typography variant="h6">Agregar Nueva Moto</Typography>
+        <Box display="flex" justifyContent="space-between">
+          <IconButton component={Link} to="/">
+            <ArrowBackIcon />
+          </IconButton>
+          <Typography variant="h6">Agregar Nueva Moto</Typography>
+        </Box>
         <TextField
           label="Modelo"
           value={newMoto.modelo}

@@ -13,9 +13,9 @@ const router = createHashRouter([
     element: <FormMoto />,
   },
   {
-    path:"/agregarMoto",
-    element:<AddMotoForm />
-  }
+    path: "/agregarMoto",
+    element: <AddMotoForm />,
+  },
   //   {
   //     path: "/carro",
   //     element: <RegistroUsuario />,

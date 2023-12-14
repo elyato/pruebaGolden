@@ -6,7 +6,7 @@
       "color": "Azul",
       "kilometraje": 50000,
       "precio": 20000,
-      "image": "pruebaSinco/src/assets/image/MT09-2022-COLOR_AZUL.jpg",
+
       "fechaRegistro": "2023-12-14T08:00:00.000Z"
     }
   ],
@@ -19,6 +19,7 @@
       "precio": 8000,
       "cilindraje": "250cc",
       "numeroVelocidad": 6,
+      "image": "pruebaSinco/src/assets/image/gsxs.jpg",
       "fechaRegistro": "2023-12-14T09:30:00.000Z"
     },
     {
@@ -66,6 +67,15 @@
       "cilindraje": "123",
       "nuemroVelocidad": "0123",
       "id": 5
+    },
+    {
+      "modelo": "ninja",
+      "color": "rojo",
+      "kilometraje": "0",
+      "precio": "2000",
+      "cilindraje": "300cc",
+      "nuemroVelocidad": "5",
+      "id": 6
     }
   ]
 }

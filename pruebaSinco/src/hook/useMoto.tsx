@@ -10,12 +10,17 @@ interface Moto {
   precio: number;
   cilindraje: string;
   nuemroVelocidad: number;
+  image?: string;
 }
 
 const queryClient = new QueryClient();
 
 const useFetchMotoData = () => {
   const apiMotoUrl = "http://localhost:3000/moto";
+
+  const showAlert = (alert = "el vehiculo se agrego correctamente!") => {
+    <Alert title={alert} />; // Aquí puedes mostrar la alerta usando el componente Alert de tu biblioteca de diseño (por ejemplo, MUI)
+  };
 
   const {
     data: motoData = [],
@@ -36,7 +41,7 @@ const useFetchMotoData = () => {
     {
       onSuccess: () => {
         queryClient.invalidateQueries("motoData");
-        <Alert title="el vehiculo se agrego correctamente!" />;
+        showAlert("¡El vehículo se agrego correctamente!");
       },
     }
   );
@@ -56,25 +61,24 @@ const useFetchMotoData = () => {
       console.error("Error al agregar la moto:", error);
     }
   };
-    const deleteMotoMutation = useMutation(
-      (motoId: number) => axios.delete(`${apiMotoUrl}/${motoId}`),
-      {
-        onSuccess: () => {
-          queryClient.invalidateQueries("motoData");
-          // Mostrar la alerta
-          showAlert("¡El vehículo se eliminó correctamente!");
-        },
-      }
-    );
+  const deleteMotoMutation = useMutation(
+    (motoId: number) => axios.delete(`${apiMotoUrl}/${motoId}`),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries("motoData");
+        // Mostrar la alerta
+        showAlert("¡El vehículo se eliminó correctamente!");
+      },
+    }
+  );
 
-   const deleteMoto = async (motoId: number) => {
-     try {
-       await deleteMotoMutation.mutateAsync(motoId);
-     } catch (error) {
-       console.error("Error al eliminar la moto:", error);
-     }
-   };
-
+  const deleteMoto = async (motoId: number) => {
+    try {
+      await deleteMotoMutation.mutateAsync(motoId);
+    } catch (error) {
+      console.error("Error al eliminar la moto:", error);
+    }
+  };
 
   return { motoData, loading, error, updateMoto, addMoto, deleteMoto };
 };
