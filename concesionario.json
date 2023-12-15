@@ -11,24 +11,85 @@
   ],
   "moto": [
     {
-      "id": 0,
       "modelo": "MT-09",
-      "color": "verde",
-      "kilometraje": 10000,
-      "precio": 8000,
-      "cilindraje": "250cc",
-      "numeroVelocidad": 6,
-      "image": "pruebaSinco/src/assets/image/gsxs.jpg",
-      "fechaRegistro": "2023-12-14T09:30:00.000Z"
+      "color": "amarillo",
+      "kilometraje": "100",
+      "precio": "1000",
+      "cilindraje": "400cc",
+      "nuemroVelocidad": "6",
+      "id": 1
     },
     {
-      "modelo": "boxer",
-      "color": "rojo",
-      "kilometraje": 0,
-      "precio": "2000",
-      "cilindraje": "100cc",
-      "nuemroVelocidad": "4",
+      "modelo": "MT-09",
+      "color": "amarillo",
+      "kilometraje": "100",
+      "precio": "1000",
+      "cilindraje": "400cc",
+      "nuemroVelocidad": "6",
       "id": 2
+    },
+    {
+      "modelo": "MT-09",
+      "color": "amarillo",
+      "kilometraje": "100",
+      "precio": "1000",
+      "cilindraje": "400cc",
+      "nuemroVelocidad": "6",
+      "id": 3
+    },
+    {
+      "modelo": "MT-09",
+      "color": "amarillo",
+      "kilometraje": "100",
+      "precio": "1000",
+      "cilindraje": "400cc",
+      "nuemroVelocidad": "6",
+      "id": 4
+    },
+    {
+      "modelo": "MT-09",
+      "color": "amarillo",
+      "kilometraje": "100",
+      "precio": "1000",
+      "cilindraje": "400cc",
+      "nuemroVelocidad": "6",
+      "id": 5
+    },
+    {
+      "modelo": "MT-09",
+      "color": "amarillo",
+      "kilometraje": "100",
+      "precio": "1000",
+      "cilindraje": "400cc",
+      "nuemroVelocidad": "6",
+      "id": 6
+    },
+    {
+      "modelo": "MT-09",
+      "color": "amarillo",
+      "kilometraje": "100",
+      "precio": "1000",
+      "cilindraje": "400cc",
+      "nuemroVelocidad": "6",
+      "id": 7
+    },
+    {
+      "modelo": "MT-09",
+      "color": "amarillo",
+      "kilometraje": "100",
+      "precio": "1000",
+      "cilindraje": "400cc",
+      "nuemroVelocidad": "6",
+      "id": 8
+    },
+    {
+      "modelo": "MT-09",
+      "color": "amarillo",
+      "kilometraje": "100",
+      "precio": "1000",
+      "cilindraje": "400cc",
+      "nuemroVelocidad": "6",
+      "id": 9
     }
   ],
   "clientes": [

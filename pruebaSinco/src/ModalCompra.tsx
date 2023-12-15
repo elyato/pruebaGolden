@@ -2,6 +2,7 @@ import { Box, Button, ListItem, Modal, TextField } from "@mui/material";
 import { Dispatch, SetStateAction, useState } from "react";
 import useFetchMotoData from "./hook/useMoto";
 import { Moto } from "./interfaces/DataMoto";
+import useClientes from "./hook/useClientes";
 
 interface porps {
   selectedMoto: Moto | null;
@@ -35,6 +36,7 @@ export const ModalCompra = ({
   const data = useFetchMotoData();
   const { deleteMoto } = data;
 
+  const dataCliente = useClientes()
   const handleConfirmColor = async () => {
     if (selectedMoto) {
       await handleUpdateMoto(selectedMoto.id, "color", newColor);

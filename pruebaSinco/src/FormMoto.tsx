@@ -9,7 +9,9 @@ import {
   IconButton,
   Box,
   CardMedia,
+  Grid,
 } from "@mui/material";
+import { PageHeader } from "@sinco/react";
 import { DrawerInfo } from "./Components/DrawerInfo";
 import InfoIcon from "@mui/icons-material/Info";
 import { ModalCompra } from "./ModalCompra";
@@ -58,47 +60,45 @@ export const FormMoto = () => {
 
   return (
     <Stack width="99vw">
-      <Box
-        width="40%"
-        display="flex"
-        justifyContent="space-between"
-        textAlign="end"
-        alignItems="center"
-        margin={1}
-      >
-        <IconButton component={Link} to="/">
-          <ArrowBackIcon />
-        </IconButton>
-        <Typography variant="h5">
-          Bienvenido a la sección de motos, elige nuestro catálogo
-        </Typography>
-      </Box>
+      <PageHeader
+        title="Bienvenido a la sección de motos, elige nuestro catálogo"
+        buttonBack={
+          <IconButton component={Link} to="/">
+            <ArrowBackIcon />
+          </IconButton>
+        }
+      />
 
-      {motoData.map((moto, index) => (
-        <Card key={index} sx={{ marginTop: "16px" }}>
-          <CardContent>
-            <Typography variant="body1">Modelo: {moto.modelo}</Typography>
-            <CardMedia
-              sx={{ width: "200px" }}
-              component="img"
-              alt=""
-              image={moto.image}
-            />{" "}
-            <Button
-              size="small"
-              variant="contained"
-              color="primary"
-              onClick={() => handleOpenDrawer(moto)}
-              startIcon={<InfoIcon />}
-            >
-              Ver detalle
-            </Button>
-            <Button color="success" onClick={() => handleVenderClick(moto)}>
-              Vender
-            </Button>
-          </CardContent>
-        </Card>
-      ))}
+      <Grid container spacing={2}>
+        {motoData.map((moto, index) => (
+          <Grid item key={index} xs={12} sm={6} md={4}>
+            <Card sx={{ marginTop: "16px" }}>
+              <CardContent>
+                <Typography variant="body1">Modelo: {moto.modelo}</Typography>
+                <CardMedia
+                  sx={{ width: "200px" }}
+                  component="img"
+                  alt=""
+                  image={moto.image}
+                />{" "}
+                <Button
+                  size="small"
+                  variant="contained"
+                  color="primary"
+                  onClick={() => handleOpenDrawer(moto)}
+                  startIcon={<InfoIcon />}
+                >
+                  Ver detalle
+                </Button>
+                <Button color="success" onClick={() => handleVenderClick(moto)}>
+                  Vender
+                </Button>
+              </CardContent>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+
       <DrawerInfo
         drawerOpen={drawerOpen}
         handleCloseDrawer={handleCloseDrawer}
