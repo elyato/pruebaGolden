@@ -12,7 +12,7 @@ import useFetchMotoData from "./hook/useMoto";
 import { Moto } from "./interfaces/DataMoto";
 import useClientes from "./hook/useClientes";
 
-interface porps {
+interface Props {
   selectedMoto: Moto | null;
   modalOpen: boolean;
   handleCloseModal: () => void;
@@ -26,6 +26,7 @@ interface porps {
     newValue: any
   ) => Promise<void>;
 }
+
 export const ModalCompra = ({
   modalOpen,
   handleCloseModal,
@@ -35,28 +36,37 @@ export const ModalCompra = ({
   setTextField2Value,
   handleUpdateMoto,
   selectedMoto,
-}: porps) => {
+}: Props) => {
   const [newColor, setNewColor] = useState("");
-  const handleColorChange = (event: any) => {
+  const handleColorChange = (event) => {
     setNewColor(event.target.value);
   };
 
   const data = useFetchMotoData();
   const { deleteMoto } = data;
 
-  const dataCliente = useClientes();
-  const handleConfirmColor = async () => {
-    if (selectedMoto) {
-      await handleUpdateMoto(selectedMoto.id, "color", newColor);
-      setNewColor("");
-    }
-  };
+  const { addCliente } = useClientes();
 
   const handleConfirmCompra = async () => {
     if (selectedMoto) {
-      deleteMoto(selectedMoto.id);
+      try {
+        const newClient = {
+          nombreCompleto: textField1Value,
+          cedula: textField2Value,
+        };
+
+        await addCliente(newClient);
+        setTextField1Value("");
+        setTextField2Value("");
+        await deleteMoto(selectedMoto.id);
+        handleCloseModal();
+      } catch (error) {
+        console.error("Error al confirmar la compra", error);
+        // Handle the error as needed
+      }
     }
   };
+
   return (
     <Modal
       open={modalOpen}
@@ -102,26 +112,11 @@ export const ModalCompra = ({
             <Button
               variant="contained"
               onClick={handleConfirmCompra}
-              disabled={textField1Value == "" || textField2Value == ""}
+              disabled={textField1Value === "" || textField2Value === ""}
             >
               Confirmar compra
             </Button>
           </Box>
-          {/* <ListItem>
-            <TextField
-              label="Nuevo Color"
-              variant="outlined"
-              value={newColor}
-              onChange={handleColorChange}
-            />
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={handleConfirmColor}
-            >
-              Confirmar
-            </Button>
-          </ListItem> */}
         </Stack>
       </div>
     </Modal>

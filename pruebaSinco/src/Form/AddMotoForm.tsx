@@ -35,7 +35,6 @@ const AddMotoForm = () => {
   const handleAddMoto = async () => {
     const adMoto = await addMoto(newMoto);
     setIsActualizo(adMoto);
-    console.log(adMoto);
 
     setNewMoto({
       modelo: "",

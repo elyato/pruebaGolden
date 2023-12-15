@@ -20,69 +20,6 @@
       "id": 2
     },
     {
-      "modelo": "MT-09",
-      "color": "ROjo",
-      "kilometraje": "100",
-      "precio": "1000",
-      "cilindraje": "400cc",
-      "nuemroVelocidad": "6",
-      "id": 3
-    },
-    {
-      "modelo": "MT-09",
-      "color": "amarillo",
-      "kilometraje": "100",
-      "precio": "1000",
-      "cilindraje": "400cc",
-      "nuemroVelocidad": "6",
-      "id": 4
-    },
-    {
-      "modelo": "MT-09",
-      "color": "amarillo",
-      "kilometraje": "100",
-      "precio": "1000",
-      "cilindraje": "400cc",
-      "nuemroVelocidad": "6",
-      "id": 5
-    },
-    {
-      "modelo": "MT-09",
-      "color": "Aguapanela",
-      "kilometraje": "100",
-      "precio": "1000",
-      "cilindraje": "400cc",
-      "nuemroVelocidad": "6",
-      "id": 6
-    },
-    {
-      "modelo": "MT-09",
-      "color": "amarillo",
-      "kilometraje": "100",
-      "precio": "1000",
-      "cilindraje": "400cc",
-      "nuemroVelocidad": "6",
-      "id": 7
-    },
-    {
-      "modelo": "MT-09",
-      "color": "amarillo",
-      "kilometraje": "100",
-      "precio": "1000",
-      "cilindraje": "400cc",
-      "nuemroVelocidad": "6",
-      "id": 8
-    },
-    {
-      "modelo": "MT-09",
-      "color": "amarillo",
-      "kilometraje": "100",
-      "precio": "1000",
-      "cilindraje": "400cc",
-      "nuemroVelocidad": "6",
-      "id": 9
-    },
-    {
       "modelo": "MT-03",
       "color": "roja",
       "kilometraje": "0",
@@ -90,12 +27,58 @@
       "cilindraje": "300",
       "nuemroVelocidad": "1",
       "id": 10
+    },
+    {
+      "modelo": "r",
+      "color": "r",
+      "kilometraje": "0r",
+      "precio": "0r",
+      "cilindraje": "r",
+      "nuemroVelocidad": "0r",
+      "id": 12
+    },
+    {
+      "modelo": "t",
+      "color": "t",
+      "kilometraje": "0t",
+      "precio": "0t",
+      "cilindraje": "t",
+      "nuemroVelocidad": "0t",
+      "id": 13
+    },
+    {
+      "modelo": "q",
+      "color": "q",
+      "kilometraje": "0q",
+      "precio": "0q",
+      "cilindraje": "q",
+      "nuemroVelocidad": "0q",
+      "id": 14
+    },
+    {
+      "modelo": "i",
+      "color": "i",
+      "kilometraje": "0i",
+      "precio": "0i",
+      "cilindraje": "i",
+      "nuemroVelocidad": "0i",
+      "id": 15
+    },
+    {
+      "modelo": "e",
+      "color": "e",
+      "kilometraje": "0e",
+      "precio": "0w",
+      "cilindraje": "w",
+      "nuemroVelocidad": "0w",
+      "id": 16
     }
   ],
   "clientes": [
     {
-      "nombre": "",
-      "cedula": 0
+      "nombreCompleto": "asd",
+      "cedula": "asd",
+      "id": 1
     }
   ]
 }

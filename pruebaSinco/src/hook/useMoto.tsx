@@ -1,9 +1,4 @@
-import {
-  useQuery,
-  useMutation,
-  QueryClient,
-  useQueryClient,
-} from "react-query";
+import { useQuery, useMutation, useQueryClient } from "react-query";
 import axios from "axios";
 import { Alert } from "@mui/material";
 
@@ -60,7 +55,7 @@ const useFetchMotoData = () => {
 
   const addMoto = async (newMotoData: Omit<Moto, "id">) => {
     try {
-      if (motoData.length <= 15) {
+      if (motoData.length <= 14) {
         await addMotoMutation.mutateAsync(newMotoData);
         return true;
       }
