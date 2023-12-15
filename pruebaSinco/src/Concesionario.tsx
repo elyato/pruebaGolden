@@ -1,32 +1,50 @@
-import {
-  Card,
-  CardContent,
-  Typography,
-  Button,
-  Stack,
-  Box,
-  CardMedia,
-} from "@mui/material";
+import { useState } from "react";
+import { Card, CardContent, Button, Box, CardMedia } from "@mui/material";
 import { Link } from "react-router-dom";
 import TwoWheelerIcon from "@mui/icons-material/TwoWheeler";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import { PageHeader } from "@sinco/react";
+import AddIcon from "@mui/icons-material/Add";
+import { TablaPrecios } from "./Components/TablaPrecios";
 
 export const Concesionario = () => {
+  const [showTablaPrecios, setShowTablaPrecios] = useState(false);
+
+  const handlePreciosClick = () => {
+    setShowTablaPrecios(!showTablaPrecios);
+  };
+
   return (
-    <Box width="100%" height="100%" alignItems="center" justifyContent="center">
+    <Box
+      width="100%"
+      height="100%"
+      alignItems="center"
+      justifyContent="center"
+      flexDirection="column"
+    >
       <PageHeader
         title="Concesionario El Yato"
         actions={
-          <Button
-            color="success"
-            variant="contained"
-            component={Link}
-            to="/agregarMoto"
-            size="small"
-          >
-            Agregar Vehículo
-          </Button>
+          <Box display="flex" justifyContent="space-between">
+            <Button
+              color="secondary"
+              variant="contained"
+              size="small"
+              onClick={handlePreciosClick}
+            >
+              Precios
+            </Button>
+            <Button
+              color="success"
+              variant="contained"
+              component={Link}
+              to="/agregarMoto"
+              size="small"
+              startIcon={<AddIcon />}
+            >
+              Agregar Vehículo
+            </Button>
+          </Box>
         }
       />
       <Box display="flex" justifyContent="space-around">
@@ -38,9 +56,6 @@ export const Concesionario = () => {
             image="https://cdn5.dibujos.net/dibujos/pintados/202048/coche-deportivo-rapido-vehiculos-coches-12091495.jpg"
           />
           <CardContent>
-            <Typography variant="body1" paragraph>
-              ¿Qué le gustaría mirar?
-            </Typography>
             <Box display="flex" gap={2}>
               <Button
                 variant="contained"
@@ -72,6 +87,12 @@ export const Concesionario = () => {
           </CardContent>
         </Card>
       </Box>
+      {showTablaPrecios && (
+        <TablaPrecios
+          setShowTablaPrecios={setShowTablaPrecios}
+          showTablaPrecios={showTablaPrecios}
+        />
+      )}
     </Box>
   );
 };

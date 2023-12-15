@@ -8,9 +8,9 @@ import {
   Typography,
 } from "@mui/material";
 import { Dispatch, SetStateAction, useState } from "react";
-import useFetchMotoData from "./hook/useMoto";
-import { Moto } from "./interfaces/DataMoto";
-import useClientes from "./hook/useClientes";
+import useFetchMotoData from "../hook/useMoto";
+import { Moto } from "../interfaces/Data";
+import useClientes from "../hook/useClientes";
 
 interface Props {
   selectedMoto: Moto | null;

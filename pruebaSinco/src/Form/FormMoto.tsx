@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import useFetchMotoData from "./hook/useMoto";
+import { useState } from "react";
+import useFetchMotoData from "../hook/useMoto";
 import {
   Card,
   CardContent,
@@ -12,9 +12,9 @@ import {
   Grid,
 } from "@mui/material";
 import { PageHeader } from "@sinco/react";
-import { DrawerInfo } from "./Components/DrawerInfo";
+import { DrawerInfo } from "../Components/DrawerInfo";
 import InfoIcon from "@mui/icons-material/Info";
-import { ModalCompra } from "./ModalCompra";
+import { ModalCompra } from "../Components/ModalCompra";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Link } from "react-router-dom";
 

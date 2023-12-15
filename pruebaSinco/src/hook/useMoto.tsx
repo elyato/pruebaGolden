@@ -1,17 +1,7 @@
 import { useQuery, useMutation, useQueryClient } from "react-query";
 import axios from "axios";
 import { Alert } from "@mui/material";
-
-interface Moto {
-  id: number;
-  modelo: string;
-  color: string;
-  kilometraje: number;
-  precio: number;
-  cilindraje: string;
-  nuemroVelocidad: number;
-  image?: string;
-}
+import { Moto } from "../interfaces/Data";
 
 const useFetchMotoData = () => {
   const apiMotoUrl = "http://localhost:3000/moto";
@@ -78,7 +68,6 @@ const useFetchMotoData = () => {
     {
       onSuccess: () => {
         queryClient.invalidateQueries("motoData");
-        // Mostrar la alerta
         showAlert("¡El vehículo se eliminó correctamente!");
       },
     }

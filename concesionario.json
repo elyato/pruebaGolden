@@ -20,24 +20,6 @@
       "id": 2
     },
     {
-      "modelo": "MT-03",
-      "color": "roja",
-      "kilometraje": "0",
-      "precio": "20000",
-      "cilindraje": "300",
-      "nuemroVelocidad": "1",
-      "id": 10
-    },
-    {
-      "modelo": "r",
-      "color": "r",
-      "kilometraje": "0r",
-      "precio": "0r",
-      "cilindraje": "r",
-      "nuemroVelocidad": "0r",
-      "id": 12
-    },
-    {
       "modelo": "t",
       "color": "t",
       "kilometraje": "0t",
@@ -79,6 +61,39 @@
       "nombreCompleto": "asd",
       "cedula": "asd",
       "id": 1
+    },
+    {
+      "nombreCompleto": "cristian",
+      "cedula": "102446",
+      "id": 2
+    },
+    {
+      "nombreCompleto": "cristian",
+      "cedula": "1235",
+      "id": 3
+    }
+  ],
+  "precios": [
+    {
+      "modelo": "Sedán",
+      "color": "Azul",
+      "kilometraje": 0,
+      "precio": 20000,
+      "fechaRegistro": "2023-12-14T08:00:00.000Z"
+    },
+    {
+      "modelo": "MT-09",
+      "color": "Azul",
+      "kilometraje": 0,
+      "precio": 20000,
+      "fechaRegistro": "2023-12-14T08:00:00.000Z"
+    },
+    {
+      "modelo": "MT-03",
+      "color": "roja",
+      "kilometraje": 0,
+      "precio": 20000,
+      "fechaRegistro": "2023-12-14T08:00:00.000Z"
     }
   ]
 }
