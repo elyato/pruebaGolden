@@ -1,4 +1,12 @@
-import { Box, Button, ListItem, Modal, TextField } from "@mui/material";
+import {
+  Box,
+  Button,
+  ListItem,
+  Modal,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { Dispatch, SetStateAction, useState } from "react";
 import useFetchMotoData from "./hook/useMoto";
 import { Moto } from "./interfaces/DataMoto";
@@ -36,7 +44,7 @@ export const ModalCompra = ({
   const data = useFetchMotoData();
   const { deleteMoto } = data;
 
-  const dataCliente = useClientes()
+  const dataCliente = useClientes();
   const handleConfirmColor = async () => {
     if (selectedMoto) {
       await handleUpdateMoto(selectedMoto.id, "color", newColor);
@@ -50,20 +58,24 @@ export const ModalCompra = ({
     }
   };
   return (
-    <Modal open={modalOpen} onClose={handleCloseModal}>
+    <Modal
+      open={modalOpen}
+      onClose={handleCloseModal}
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <div>
-        <Box
-          sx={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            width: 500,
-            bgcolor: "background.paper",
-            p: 2,
-            borderRadius: 2,
-          }}
+        <Stack
+          width={600}
+          p={2}
+          bgcolor="background.paper"
+          gap="10px"
+          borderRadius={1}
         >
+          <Typography variant="subtitle1">Datos del comprador</Typography>
           <TextField
             label="Nombre Completo"
             value={textField1Value}
@@ -78,18 +90,24 @@ export const ModalCompra = ({
             fullWidth
             margin="dense"
           />
-          <Button
-            color="primary"
-            onClick={() => {
-              handleCloseModal();
-            }}
-          >
-            Cancelar
-          </Button>
-          <Button variant="contained" onClick={handleConfirmCompra}>
-            Confirmar compra
-          </Button>
-          <ListItem>
+          <Box display="flex" justifyContent="space-between">
+            <Button
+              color="primary"
+              onClick={() => {
+                handleCloseModal();
+              }}
+            >
+              Cancelar
+            </Button>
+            <Button
+              variant="contained"
+              onClick={handleConfirmCompra}
+              disabled={textField1Value == "" || textField2Value == ""}
+            >
+              Confirmar compra
+            </Button>
+          </Box>
+          {/* <ListItem>
             <TextField
               label="Nuevo Color"
               variant="outlined"
@@ -103,8 +121,8 @@ export const ModalCompra = ({
             >
               Confirmar
             </Button>
-          </ListItem>
-        </Box>
+          </ListItem> */}
+        </Stack>
       </div>
     </Modal>
   );

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useFetchMotoData from "./hook/useMoto";
 import {
   Card,
@@ -69,7 +69,7 @@ export const FormMoto = () => {
         }
       />
 
-      <Grid container spacing={2}>
+      <Grid container spacing={2} marginTop={2}>
         {motoData.map((moto, index) => (
           <Grid item key={index} xs={12} sm={6} md={4}>
             <Card sx={{ marginTop: "16px" }}>
@@ -80,19 +80,31 @@ export const FormMoto = () => {
                   component="img"
                   alt=""
                   image={moto.image}
-                />{" "}
-                <Button
-                  size="small"
-                  variant="contained"
-                  color="primary"
-                  onClick={() => handleOpenDrawer(moto)}
-                  startIcon={<InfoIcon />}
+                />
+                <Box
+                  display="flex"
+                  justifyContent="space-between"
+                  height={50}
+                  alignItems="center"
                 >
-                  Ver detalle
-                </Button>
-                <Button color="success" onClick={() => handleVenderClick(moto)}>
-                  Vender
-                </Button>
+                  <Button
+                    size="small"
+                    variant="contained"
+                    color="primary"
+                    onClick={() => handleOpenDrawer(moto)}
+                    startIcon={<InfoIcon />}
+                  >
+                    Ver detalle
+                  </Button>
+                  <Button
+                    color="success"
+                    variant="outlined"
+                    size="small"
+                    onClick={() => handleVenderClick(moto)}
+                  >
+                    Vender
+                  </Button>
+                </Box>
               </CardContent>
             </Card>
           </Grid>

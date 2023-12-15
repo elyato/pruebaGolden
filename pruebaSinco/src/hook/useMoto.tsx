@@ -1,4 +1,9 @@
-import { useQuery, useMutation, QueryClient } from "react-query";
+import {
+  useQuery,
+  useMutation,
+  QueryClient,
+  useQueryClient,
+} from "react-query";
 import axios from "axios";
 import { Alert } from "@mui/material";
 
@@ -13,27 +18,35 @@ interface Moto {
   image?: string;
 }
 
-const queryClient = new QueryClient();
-
 const useFetchMotoData = () => {
   const apiMotoUrl = "http://localhost:3000/moto";
 
-  const showAlert = (alert = "el vehiculo se agrego correctamente!") => {
-    <Alert title={alert} />; // Aquí puedes mostrar la alerta usando el componente Alert de tu biblioteca de diseño (por ejemplo, MUI)
-  };
+  const queryClient = useQueryClient();
 
   const {
     data: motoData = [],
     isLoading: loading,
     error,
-  } = useQuery<Moto[]>("motoData", async () => {
-    const response = await axios.get(apiMotoUrl);
-    return response.data;
+  } = useQuery<Moto[]>({
+    queryKey: "motoData",
+    queryFn: async () => {
+      const response = await axios.get(apiMotoUrl);
+      return response.data;
+    },
   });
+
+  const showAlert = (alert = "el vehiculo se agrego correctamente!") => {
+    <Alert title={alert} />;
+  };
 
   const updateMotoMutation = useMutation(
     ({ motoId, newData }: { motoId: number; newData: Partial<Moto> }) =>
-      axios.patch(`${apiMotoUrl}/${motoId}`, newData)
+      axios.patch(`${apiMotoUrl}/${motoId}`, newData),
+    {
+      onSuccess: () => {
+        queryClient.refetchQueries();
+      },
+    }
   );
 
   const addMotoMutation = useMutation(

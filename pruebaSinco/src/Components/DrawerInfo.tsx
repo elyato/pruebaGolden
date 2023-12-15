@@ -1,6 +1,19 @@
-import { Drawer, List, ListItem, Typography, Chip } from "@mui/material";
+import {
+  Modal,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Typography,
+  Chip,
+  Box,
+  IconButton,
+} from "@mui/material";
 import { Moto } from "../interfaces/DataMoto";
-
+import CloseIcon from "@mui/icons-material/Close";
 
 interface DrawerInfoProps {
   handleCloseDrawer: () => void;
@@ -14,39 +27,76 @@ export const DrawerInfo = ({
   selectedMoto,
 }: DrawerInfoProps) => {
   return (
-    <Drawer anchor="right" open={drawerOpen} onClose={handleCloseDrawer}>
-      <List>
-        {selectedMoto && (
-          <>
-            <ListItem>
-              <Typography variant="h5">
-                Especificaciones de {selectedMoto.modelo}
-              </Typography>
-            </ListItem>
-            <ListItem>
-              <Chip label={`Color: ${selectedMoto.color}`} />
-            </ListItem>
-            <ListItem>
-              <Chip label={`Kilometraje: ${selectedMoto.kilometraje} km`} />
-            </ListItem>
-            <ListItem>
-              <Chip label={`Precio: $${selectedMoto.precio}`} />
-            </ListItem>
-            {selectedMoto.cilindraje && (
-              <ListItem>
-                <Chip label={`Cilindraje: ${selectedMoto.cilindraje}`} />
-              </ListItem>
-            )}
-            {selectedMoto.numeroVelocidad && (
-              <ListItem>
-                <Chip
-                  label={`Número de Velocidades: ${selectedMoto.numeroVelocidad}`}
-                />
-              </ListItem>
-            )}
-          </>
-        )}
-      </List>
-    </Drawer>
+    <Modal
+      open={drawerOpen}
+      onClose={handleCloseDrawer}
+      sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+    >
+      <Box width={500}>
+        <TableContainer component={Paper}>
+          <Table aria-label="Moto Information" sx={{ height: 300 }}>
+            <TableHead>
+              <TableRow>
+                <TableCell colSpan={2}>
+                  {selectedMoto && (
+                    <>
+                      <Box display="flex" justifyContent="space-between">
+                        <Typography variant="h5">
+                          Especificaciones de {selectedMoto.modelo}
+                        </Typography>
+
+                        <IconButton onClick={handleCloseDrawer}>
+                          <CloseIcon />
+                        </IconButton>
+                      </Box>
+                    </>
+                  )}
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {selectedMoto && (
+                <>
+                  <TableRow>
+                    <TableCell>
+                      <Chip label="Color" />
+                    </TableCell>
+                    <TableCell>{selectedMoto.color}</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>
+                      <Chip label="Kilometraje" />
+                    </TableCell>
+                    <TableCell>{`${selectedMoto.kilometraje} km`}</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>
+                      <Chip label="Precio" />
+                    </TableCell>
+                    <TableCell>{`$${selectedMoto.precio}`}</TableCell>
+                  </TableRow>
+                  {selectedMoto.cilindraje && (
+                    <TableRow>
+                      <TableCell>
+                        <Chip label="Cilindraje" />
+                      </TableCell>
+                      <TableCell>{selectedMoto.cilindraje}</TableCell>
+                    </TableRow>
+                  )}
+                  {selectedMoto.numeroVelocidad && (
+                    <TableRow>
+                      <TableCell>
+                        <Chip label="Número de Velocidades" />
+                      </TableCell>
+                      <TableCell>{selectedMoto.numeroVelocidad}</TableCell>
+                    </TableRow>
+                  )}
+                </>
+              )}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Box>
+    </Modal>
   );
 };

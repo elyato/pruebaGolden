@@ -12,16 +12,7 @@
   "moto": [
     {
       "modelo": "MT-09",
-      "color": "amarillo",
-      "kilometraje": "100",
-      "precio": "1000",
-      "cilindraje": "400cc",
-      "nuemroVelocidad": "6",
-      "id": 1
-    },
-    {
-      "modelo": "MT-09",
-      "color": "amarillo",
+      "color": "Aguapanela",
       "kilometraje": "100",
       "precio": "1000",
       "cilindraje": "400cc",
@@ -30,7 +21,7 @@
     },
     {
       "modelo": "MT-09",
-      "color": "amarillo",
+      "color": "ROjo",
       "kilometraje": "100",
       "precio": "1000",
       "cilindraje": "400cc",
@@ -57,7 +48,7 @@
     },
     {
       "modelo": "MT-09",
-      "color": "amarillo",
+      "color": "Aguapanela",
       "kilometraje": "100",
       "precio": "1000",
       "cilindraje": "400cc",
@@ -90,6 +81,15 @@
       "cilindraje": "400cc",
       "nuemroVelocidad": "6",
       "id": 9
+    },
+    {
+      "modelo": "MT-03",
+      "color": "roja",
+      "kilometraje": "0",
+      "precio": "20000",
+      "cilindraje": "300",
+      "nuemroVelocidad": "1",
+      "id": 10
     }
   ],
   "clientes": [
