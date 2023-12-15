@@ -5,6 +5,7 @@ import {
   Button,
   Stack,
   Box,
+  CardMedia,
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import TwoWheelerIcon from "@mui/icons-material/TwoWheeler";
@@ -13,40 +14,53 @@ import { PageHeader } from "@sinco/react";
 
 export const Concesionario = () => {
   return (
-    <Stack
-      width="100%"
-      height="100%"
-      alignItems="center"
-      justifyContent="center"
-    >
-          <PageHeader
-            title="Concesionario El Yato"
-            actions={
-              <Button color="success" variant="contained" component={Link} to="/agregarMoto" size="small">
-                Agregar Vehículo
-              </Button>
-            }
-          />
-      <Card>
-        <CardContent>
-          <Box
-            display="flex"
-            justifyContent="space-between"
-            alignItems="center"
+    <Box width="100%" height="100%" alignItems="center" justifyContent="center">
+      <PageHeader
+        title="Concesionario El Yato"
+        actions={
+          <Button
+            color="success"
+            variant="contained"
+            component={Link}
+            to="/agregarMoto"
+            size="small"
           >
-          </Box>
-          <Typography variant="body1" paragraph>
-            ¿Qué le gustaría mirar?
-          </Typography>
-          <Box display="flex" gap={2}>
-            <Button
-              variant="contained"
-              component={Link}
-              to="/carro"
-              startIcon={<DirectionsCarIcon />}
-            >
-              Carros
-            </Button>
+            Agregar Vehículo
+          </Button>
+        }
+      />
+      <Box display="flex" justifyContent="space-around">
+        <Card sx={{ marginTop: 2 }}>
+          <CardMedia
+            component="img"
+            alt="Concesionario Image"
+            height="200"
+            image="https://cdn5.dibujos.net/dibujos/pintados/202048/coche-deportivo-rapido-vehiculos-coches-12091495.jpg"
+          />
+          <CardContent>
+            <Typography variant="body1" paragraph>
+              ¿Qué le gustaría mirar?
+            </Typography>
+            <Box display="flex" gap={2}>
+              <Button
+                variant="contained"
+                component={Link}
+                to="/carro"
+                startIcon={<DirectionsCarIcon />}
+              >
+                Carros
+              </Button>
+            </Box>
+          </CardContent>
+        </Card>
+        <Card sx={{ marginTop: 2 }}>
+          <CardMedia
+            component="img"
+            alt="Concesionario Image"
+            height="200"
+            image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1IHGoWebHe79EO1G16jn0WEOzNmzSPQa-Ug&usqp=CAU"
+          />
+          <CardContent sx={{ display: "flex", justifyContent: "center" }}>
             <Button
               variant="contained"
               component={Link}
@@ -55,9 +69,9 @@ export const Concesionario = () => {
             >
               Motos
             </Button>
-          </Box>
-        </CardContent>
-      </Card>
-    </Stack>
+          </CardContent>
+        </Card>
+      </Box>
+    </Box>
   );
 };
