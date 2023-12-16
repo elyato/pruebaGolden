@@ -1,4 +1,4 @@
-export interface Moto {
+export interface vehiculo {
   id: number;
   modelo: string;
   color: string;

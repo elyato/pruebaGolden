@@ -1,7 +1,7 @@
 import { useQuery, useMutation, useQueryClient } from "react-query";
 import axios from "axios";
 import { Alert } from "@mui/material";
-import { Moto } from "../interfaces/Data";
+import { vehiculo } from "../interfaces/Data";
 
 const useFetchMotoData = () => {
   const apiMotoUrl = "http://localhost:3000/moto";
@@ -12,7 +12,7 @@ const useFetchMotoData = () => {
     data: motoData = [],
     isLoading: loading,
     error,
-  } = useQuery<Moto[]>({
+  } = useQuery<vehiculo[]>({
     queryKey: "motoData",
     queryFn: async () => {
       const response = await axios.get(apiMotoUrl);
@@ -25,7 +25,7 @@ const useFetchMotoData = () => {
   };
 
   const updateMotoMutation = useMutation(
-    ({ motoId, newData }: { motoId: number; newData: Partial<Moto> }) =>
+    ({ motoId, newData }: { motoId: number; newData: Partial<vehiculo> }) =>
       axios.patch(`${apiMotoUrl}/${motoId}`, newData),
     {
       onSuccess: () => {
@@ -35,7 +35,7 @@ const useFetchMotoData = () => {
   );
 
   const addMotoMutation = useMutation(
-    (newMotoData: Omit<Moto, "id">) => axios.post(apiMotoUrl, newMotoData),
+    (newMotoData: Omit<vehiculo, "id">) => axios.post(apiMotoUrl, newMotoData),
     {
       onSuccess: () => {
         queryClient.invalidateQueries("motoData");
@@ -43,7 +43,7 @@ const useFetchMotoData = () => {
     }
   );
 
-  const addMoto = async (newMotoData: Omit<Moto, "id">) => {
+  const addMoto = async (newMotoData: Omit<vehiculo, "id">) => {
     try {
       if (motoData.length <= 14) {
         await addMotoMutation.mutateAsync(newMotoData);
@@ -55,7 +55,7 @@ const useFetchMotoData = () => {
     }
     return false;
   };
-  const updateMoto = async (motoId: number, newData: Partial<Moto>) => {
+  const updateMoto = async (motoId: number, newData: Partial<vehiculo>) => {
     try {
       await updateMotoMutation.mutateAsync({ motoId, newData });
     } catch (error) {

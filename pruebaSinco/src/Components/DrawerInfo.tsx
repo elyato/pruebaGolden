@@ -12,13 +12,13 @@ import {
   Box,
   IconButton,
 } from "@mui/material";
-import { Moto } from "../interfaces/Data";
+import { vehiculo } from "../interfaces/Data";
 import CloseIcon from "@mui/icons-material/Close";
 
 interface DrawerInfoProps {
   handleCloseDrawer: () => void;
   drawerOpen: boolean;
-  selectedMoto: Moto | null;
+  selectedMoto: vehiculo | null;
 }
 
 export const DrawerInfo = ({

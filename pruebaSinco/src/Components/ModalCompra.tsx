@@ -9,11 +9,11 @@ import {
 } from "@mui/material";
 import { Dispatch, SetStateAction, useState } from "react";
 import useFetchMotoData from "../hook/useMoto";
-import { Moto } from "../interfaces/Data";
+import { vehiculo } from "../interfaces/Data";
 import useClientes from "../hook/useClientes";
 
 interface Props {
-  selectedMoto: Moto | null;
+  selectedMoto: vehiculo | null;
   modalOpen: boolean;
   handleCloseModal: () => void;
   textField1Value: string;
@@ -62,7 +62,6 @@ export const ModalCompra = ({
         handleCloseModal();
       } catch (error) {
         console.error("Error al confirmar la compra", error);
-        // Handle the error as needed
       }
     }
   };
@@ -94,7 +93,7 @@ export const ModalCompra = ({
             margin="dense"
           />
           <TextField
-            label="Cedula"
+            label="Cédula"
             value={textField2Value}
             onChange={(e) => setTextField2Value(e.target.value)}
             fullWidth
