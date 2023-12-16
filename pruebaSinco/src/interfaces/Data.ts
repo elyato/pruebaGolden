@@ -10,6 +10,7 @@ export interface vehiculo {
 }
 
 export interface Precios {
+  id: number;
   modelo: string;
   color: string;
   kilometraje: number;

@@ -1,4 +1,4 @@
-import { usePrecios } from "../hook/usePrecios";
+import React, { useState } from "react";
 import {
   Card,
   Table,
@@ -8,33 +8,69 @@ import {
   TableCell,
   TableBody,
   Typography,
-  IconButton,
   Box,
+  Autocomplete,
+  TextField,
+  InputAdornment,
+  CardActions,
+  Button,
+  CardHeader,
 } from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
+import SearchIcon from "@mui/icons-material/Search";
+import { usePrecios } from "../hook/usePrecios";
 import { Precios } from "../interfaces/Data";
-import { Dispatch, SetStateAction } from "react";
 
-interface props {
-  setShowTablaPrecios: Dispatch<SetStateAction<boolean>>;
-  showTablaPrecios: boolean;
-}
-export const TablaPrecios = ({}: props) => {
+export const TablaPrecios = ({}) => {
   const data = usePrecios();
   const { dataPrecios } = data;
+  const [selectedModelo, setSelectedModelo] = useState<Precios | null>(null);
+
+  const handleModeloChange = (
+    event: React.ChangeEvent<{}>,
+    value: Precios | null
+  ) => {
+    setSelectedModelo(value);
+  };
+
+  const filteredData = selectedModelo ? [selectedModelo] : dataPrecios;
 
   return (
-    <Box>
-      <Card sx={{ marginTop: 2, border: "solid 1px red", width: "500px" }}>
+    <>
+      <Card sx={{ marginTop: 2, height: "100%" }}>
+        <CardHeader title="Precios" />
         <Box display="flex" alignItems="center">
-          <Typography variant="h6" color="text.primary">
-            Precios
-          </Typography>
+          <Typography variant="h6" color="text.primary"></Typography>
         </Box>
+        <CardActions>
+          <Autocomplete
+            fullWidth
+            options={dataPrecios}
+            getOptionLabel={(option: Precios) => option.modelo}
+            value={selectedModelo}
+            onChange={handleModeloChange}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="Buscar modelo"
+                variant="outlined"
+                InputProps={{
+                  ...params.InputProps,
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <SearchIcon />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            )}
+          />
+        </CardActions>
+
         <TableContainer>
           <Table size="medium">
             <TableHead>
               <TableRow>
+                <TableCell>id</TableCell>
                 <TableCell>Producto</TableCell>
                 <TableCell>Precio</TableCell>
                 <TableCell>Color</TableCell>
@@ -43,8 +79,9 @@ export const TablaPrecios = ({}: props) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {dataPrecios.map((row: Precios) => (
-                <TableRow>
+              {filteredData.map((row: Precios) => (
+                <TableRow key={row.id}>
+                  <TableCell>{row.id}</TableCell>
                   <TableCell>{row.modelo}</TableCell>
                   <TableCell>{row.precio}</TableCell>
                   <TableCell>{row.color}</TableCell>
@@ -55,7 +92,10 @@ export const TablaPrecios = ({}: props) => {
             </TableBody>
           </Table>
         </TableContainer>
+        <CardActions>
+          <Button variant="contained">Agregar nuevo modelo</Button>
+        </CardActions>
       </Card>
-    </Box>
+    </>
   );
 };

@@ -75,6 +75,7 @@
   ],
   "precios": [
     {
+      "id": 0,
       "modelo": "Sedán",
       "color": "Azul",
       "kilometraje": 0,
@@ -82,6 +83,7 @@
       "fechaRegistro": "2023-12-14T08:00:00.000Z"
     },
     {
+      "id": 1,
       "modelo": "MT-09",
       "color": "Azul",
       "kilometraje": 0,
@@ -89,6 +91,7 @@
       "fechaRegistro": "2023-12-14T08:00:00.000Z"
     },
     {
+      "id": 2,
       "modelo": "MT-03",
       "color": "roja",
       "kilometraje": 0,
