@@ -1,13 +1,12 @@
 import {
   Box,
   Button,
-  ListItem,
   Modal,
   Stack,
   TextField,
   Typography,
 } from "@mui/material";
-import { Dispatch, SetStateAction, useState } from "react";
+import { useState } from "react";
 import useFetchMotoData from "../hook/useMoto";
 import { vehiculo } from "../interfaces/Data";
 import useClientes from "../hook/useClientes";
@@ -16,11 +15,6 @@ interface Props {
   selectedMoto: vehiculo | null;
   modalOpen: boolean;
   handleCloseModal: () => void;
-  // handleUpdateMoto: (
-  //   motoId: number,
-  //   fieldName: string,
-  //   newValue: any
-  // ) => Promise<void>;
 }
 
 export const ModalCompra = ({
@@ -30,10 +24,6 @@ export const ModalCompra = ({
   // handleUpdateMoto,
   selectedMoto,
 }: Props) => {
-  const [newColor, setNewColor] = useState("");
-  const handleColorChange = (event) => {
-    setNewColor(event.target.value);
-  };
   const [textField1Value, setTextField1Value] = useState("");
   const [textField2Value, setTextField2Value] = useState("");
   const data = useFetchMotoData();
@@ -42,6 +32,7 @@ export const ModalCompra = ({
   const { addCliente } = useClientes();
 
   const handleConfirmCompra = async () => {
+    debugger
     if (selectedMoto) {
       try {
         const newClient = {

@@ -22,7 +22,7 @@ const AddMotoForm = () => {
     kilometraje: 0,
     precio: 0,
     cilindraje: "",
-    nuemroVelocidad: 0,
+    numeroVelocidad: 0,
   });
 
   const handleInputChange = (field) => (event) => {
@@ -36,13 +36,14 @@ const AddMotoForm = () => {
     const adMoto = await addMoto(newMoto);
     setIsActualizo(adMoto);
 
+    debugger
     setNewMoto({
       modelo: "",
       color: "",
       kilometraje: 0,
       precio: 0,
       cilindraje: "",
-      nuemroVelocidad: 0,
+      numeroVelocidad: 0,
     });
   };
 
@@ -114,8 +115,8 @@ const AddMotoForm = () => {
             />
             <TextField
               label="Número de Velocidad"
-              value={newMoto.nuemroVelocidad}
-              onChange={handleInputChange("nuemroVelocidad")}
+              value={newMoto.numeroVelocidad}
+              onChange={handleInputChange("numeroVelocidad")}
               margin="normal"
             />
           </Box>
@@ -128,7 +129,7 @@ const AddMotoForm = () => {
               newMoto.color === "" ||
               newMoto.precio === 0 ||
               newMoto.cilindraje === "" ||
-              newMoto.nuemroVelocidad === 0
+              newMoto.numeroVelocidad === 0
             }
             sx={{ mt: 2, gridColumn: "span 2" }}
           >

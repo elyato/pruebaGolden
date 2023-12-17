@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   Autocomplete,
   TextField,
@@ -12,7 +12,6 @@ import {
   Typography,
   Box,
   Button,
-  Modal,
 } from "@mui/material";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -22,6 +21,7 @@ import useFetchMotoData from "../hook/useMoto";
 import EditIcon from "@mui/icons-material/Edit";
 import { ModalCompra } from "./ModalCompra";
 import { Link } from "react-router-dom";
+import { ModalEditMoto } from "./ModalEditMoto";
 
 export const CardView = () => {
   const data = useFetchMotoData();
@@ -32,7 +32,6 @@ export const CardView = () => {
   const [cardCount, setCardCount] = useState(0);
   const [filteredMotos, setFilteredMotos] = useState([]);
   const [isEditModalOpen, setEditModalOpen] = useState(false);
-  const [newColor, setNewColor] = useState("");
   useEffect(() => {
     setCardCount(motoData.length);
   }, [motoData]);
@@ -45,21 +44,21 @@ export const CardView = () => {
     }
   }, [selectedMoto, motoData]);
 
-  const handleOpenModal = () => {
+  const handleOpenModal = (moto) => {
+    debugger;
     setModalOpen(true);
+    setSelectedMoto(moto);
   };
-  const handleOpenModalEdit = () => {
+  const handleOpenModalEdit = (moto) => {
     setEditModalOpen(true);
-    setNewColor(selectedMoto.color)
+    setSelectedMoto(moto);
+  };
+  const handleCloseModalEdit = () => {
+    setEditModalOpen(false);
   };
 
   const handleCloseModal = () => {
     setModalOpen(false);
-  };
-
-  const handleVenderClick = (moto) => {
-    setSelectedMoto(moto);
-    handleOpenModal();
   };
 
   const handleUpdateField = async (
@@ -118,13 +117,13 @@ export const CardView = () => {
         </Button>
       </Box>
       <Grid container spacing={2} marginTop={2}>
-        {filteredMotos.map((moto, index) => (
+        {motoData.map((moto, index) => (
           <Grid item key={index} xs={12} sm={6} md={4}>
             <Card key={index}>
               <CardHeader
                 title={`Vehiculo: ${moto.modelo}`}
                 action={
-                  <IconButton onClick={handleOpenModalEdit}>
+                  <IconButton onClick={() => handleOpenModalEdit(moto)}>
                     <EditIcon />
                   </IconButton>
                 }
@@ -132,7 +131,7 @@ export const CardView = () => {
               <CardMedia
                 component="img"
                 image={moto.image}
-                sx={{ width: "auto" }}
+                sx={{ width: "auto", height: "200px" }}
                 alt={`Imagen de ${moto.modelo}`}
               />
               <CardActions>
@@ -144,16 +143,29 @@ export const CardView = () => {
                     color="success"
                     variant="contained"
                     size="small"
-                    onClick={() => handleVenderClick(moto)}
+                    onClick={() => handleOpenModal(moto)}
                   >
                     Vender
                   </Button>
                 </Box>
               </CardActions>
               <CardContent>
-                <Typography>{`Cilindraje: ${moto.cilindraje}`}</Typography>
-                <Typography>{`Color: ${moto.color}`}</Typography>
-                <Typography>{`Número de velocidad: ${moto.numeroVelocidad}`}</Typography>
+                <Box display="flex" gap={1}>
+                  <Typography variant="subtitle1">{`Cilindraje:`}</Typography>
+                  <Typography>{` ${moto.cilindraje}`}</Typography>
+                </Box>
+                <Box display="flex" gap={1}>
+                  <Typography variant="subtitle1">{`Color:`}</Typography>
+                  <Typography>{` ${moto.color}`}</Typography>
+                </Box>
+                <Box display="flex" gap={1}>
+                  <Typography variant="subtitle1">{`Número de veloocidad:`}</Typography>
+                  <Typography>{` ${moto.numeroVelocidad}`}</Typography>
+                </Box>
+                <Box display="flex" gap={1}>
+                  <Typography variant="subtitle1">{`Kilometraje:`}</Typography>
+                  <Typography>{` ${moto.kilometraje}`}</Typography>
+                </Box>
               </CardContent>
             </Card>
           </Grid>
@@ -165,7 +177,12 @@ export const CardView = () => {
         selectedMoto={selectedMoto}
         handleCloseModal={handleCloseModal}
       />
-    
+      <ModalEditMoto
+        selectedMoto={selectedMoto}
+        isEditModalOpen={isEditModalOpen}
+        handleCloseModal={handleCloseModalEdit}
+        handleUpdateMoto={handleUpdateField}
+      />
     </>
   );
 };
