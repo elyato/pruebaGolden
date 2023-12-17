@@ -2,6 +2,7 @@ import { RouterProvider, createHashRouter } from "react-router-dom";
 import { Concesionario } from "../Concesionario";
 import AddMotoForm from "../Form/AddMotoForm";
 import { CardView } from "../Components/CardView";
+import { CardViewCarro } from "../Components/CardViewCarro";
 
 const router = createHashRouter([
   {
@@ -17,10 +18,10 @@ const router = createHashRouter([
     element: <AddMotoForm />,
   },
 
-  //   {
-  //     path: "/carro",
-  //     element: <RegistroUsuario />,
-  //     errorElement: <ErrorPage />,
+  {
+    path: "/carro",
+    element: <CardViewCarro />,
+  },
 ]);
 
 export const RouterPages = () => {

@@ -123,6 +123,11 @@
       "nombreCompleto": "santiago",
       "cedula": "12345",
       "id": 13
+    },
+    {
+      "nombreCompleto": "cristian david lozano cifuentes",
+      "cedula": "1024461570",
+      "id": 14
     }
   ],
   "precios": [

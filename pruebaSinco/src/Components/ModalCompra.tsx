@@ -8,21 +8,22 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import useFetchMotoData from "../hook/useMoto";
-import { vehiculo } from "../interfaces/Data";
 import useClientes from "../hook/useClientes";
+import { vehiculo } from "../interfaces/Data";
+import useFetchCarroData from "../hook/useCarro";
 
 interface Props {
-  selectedMoto: vehiculo | null;
+  selectedVehicle: vehiculo | null;
   modalOpen: boolean;
   handleCloseModal: () => void;
+  vehicleType: "moto" | "carro";
 }
 
 export const ModalCompra = ({
   modalOpen,
   handleCloseModal,
-
-  // handleUpdateMoto,
-  selectedMoto,
+  selectedVehicle,
+  vehicleType,
 }: Props) => {
   const [textField1Value, setTextField1Value] = useState("");
   const [textField2Value, setTextField2Value] = useState("");
@@ -30,10 +31,10 @@ export const ModalCompra = ({
   const { deleteMoto } = data;
 
   const { addCliente } = useClientes();
+  const { eliminarCarro } = useFetchCarroData();
 
   const handleConfirmCompra = async () => {
-    debugger
-    if (selectedMoto) {
+    if (selectedVehicle) {
       try {
         const newClient = {
           nombreCompleto: textField1Value,
@@ -43,7 +44,13 @@ export const ModalCompra = ({
         await addCliente(newClient);
         setTextField1Value("");
         setTextField2Value("");
-        await deleteMoto(selectedMoto.id);
+
+        if (vehicleType === "moto") {
+          await deleteMoto(selectedVehicle.id);
+        } else if (vehicleType === "carro") {
+          await eliminarCarro(selectedVehicle.id);
+        }
+
         handleCloseModal();
       } catch (error) {
         console.error("Error al confirmar la compra", error);

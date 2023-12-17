@@ -13,46 +13,48 @@ import {
   Box,
   Button,
 } from "@mui/material";
+import EditIcon from "@mui/icons-material/Edit";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-
 import { PageHeader } from "@sinco/react";
-import useFetchMotoData from "../hook/useMoto";
-import EditIcon from "@mui/icons-material/Edit";
-import { ModalCompra } from "./ModalCompra";
 import { Link } from "react-router-dom";
-import { ModalEditMoto } from "./ModalEditMoto";
+import { ModalCompra } from "./ModalCompra";
+import { ModalEditCarro } from "./ModalEditCarro"; // Import the car modal
+import useFetchCarroData from "../hook/useCarro";
 import { vehiculo } from "../interfaces/Data";
 
-export const CardView = () => {
-  const data = useFetchMotoData();
-  const { motoData, updateMoto } = data;
+export const CardViewCarro = () => {
+  const data = useFetchCarroData(); // Use the car data hook
+  const { carroData, actualizarCarro } = data;
 
   const [modalOpen, setModalOpen] = useState(false);
-  const [selectedMoto, setSelectedMoto] = useState(null);
+  const [selectedCarro, setSelectedCarro] = useState(null);
   const [cardCount, setCardCount] = useState(0);
-  const [filteredMotos, setFilteredMotos] = useState([]);
+  const [filteredCarros, setFilteredCarros] = useState([]);
   const [isEditModalOpen, setEditModalOpen] = useState(false);
-  useEffect(() => {
-    setCardCount(motoData.length);
-  }, [motoData]);
 
   useEffect(() => {
-    if (selectedMoto) {
-      setFilteredMotos([selectedMoto]);
+    setCardCount(carroData.length);
+  }, [carroData]);
+
+  useEffect(() => {
+    if (selectedCarro) {
+      setFilteredCarros([selectedCarro]);
     } else {
-      setFilteredMotos(motoData);
+      setFilteredCarros(carroData);
     }
-  }, [selectedMoto, motoData]);
+  }, [selectedCarro, carroData]);
 
-  const handleOpenModal = (moto: vehiculo) => {
+  const handleOpenModal = (carro: vehiculo) => {
     setModalOpen(true);
-    setSelectedMoto(moto);
+    setSelectedCarro(carro);
   };
-  const handleOpenModalEdit = (moto: vehiculo) => {
+
+  const handleOpenModalEdit = (carro: vehiculo) => {
     setEditModalOpen(true);
-    setSelectedMoto(moto);
+    setSelectedCarro(carro);
   };
+
   const handleCloseModalEdit = () => {
     setEditModalOpen(false);
   };
@@ -62,22 +64,22 @@ export const CardView = () => {
   };
 
   const handleUpdateField = async (
-    motoId: number,
+    carroId: number,
     fieldName: string,
     newValue: any
   ) => {
-    await updateMoto(motoId, { [fieldName]: newValue });
+    await actualizarCarro(carroId, { [fieldName]: newValue });
   };
 
-  const options   = motoData.map((moto) => ({
-    label: `${moto.modelo} - ID: ${moto.id}`,
-    value: moto,
+  const options = carroData.map((carro) => ({
+    label: `${carro.modelo} - ID: ${carro.id}`,
+    value: carro,
   }));
 
   return (
     <>
       <PageHeader
-        title={`Bienvenido a la sección de motos, elige nuestro catálogo`}
+        title={`Bienvenido a la sección de carros, elige nuestro catálogo`}
         buttonBack={
           <IconButton component={Link} to="/">
             <ArrowBackIcon />
@@ -104,7 +106,7 @@ export const CardView = () => {
           renderInput={(params) => (
             <TextField {...params} label="Seleccionar Modelo o ID" />
           )}
-          onChange={(event, value) => setSelectedMoto(value?.value || null)}
+          onChange={(event, value) => setSelectedCarro(value?.value || null)}
         />
         <Button
           variant="contained"
@@ -117,33 +119,33 @@ export const CardView = () => {
         </Button>
       </Box>
       <Grid container spacing={2} marginTop={2}>
-        {motoData.map((moto, index) => (
+        {carroData.map((carro, index) => (
           <Grid item key={index} xs={12} sm={6} md={4}>
             <Card key={index}>
               <CardHeader
-                title={`Vehiculo: ${moto.modelo}`}
+                title={`Vehiculo: ${carro.modelo}`}
                 action={
-                  <IconButton onClick={() => handleOpenModalEdit(moto)}>
+                  <IconButton onClick={() => handleOpenModalEdit(carro)}>
                     <EditIcon />
                   </IconButton>
                 }
               />
               <CardMedia
                 component="img"
-                image={moto.image}
+                image={carro.image}
                 sx={{ width: "auto", height: "200px" }}
-                alt={`Imagen de ${moto.modelo}`}
+                alt={`Imagen de ${carro.modelo}`}
               />
               <CardActions>
                 <Box display="flex" justifyContent="space-between" width="100%">
                   <Typography variant="subtitle1" color="text.primary">
-                    {`Precio: ${moto.precio}`}
+                    {`Precio: ${carro.precio}`}
                   </Typography>
                   <Button
                     color="success"
                     variant="contained"
                     size="small"
-                    onClick={() => handleOpenModal(moto)}
+                    onClick={() => handleOpenModal(carro)}
                   >
                     Vender
                   </Button>
@@ -152,19 +154,19 @@ export const CardView = () => {
               <CardContent>
                 <Box display="flex" gap={1}>
                   <Typography variant="subtitle1">{`Cilindraje:`}</Typography>
-                  <Typography>{` ${moto.cilindraje}`}</Typography>
+                  <Typography>{` ${carro.cilindraje}`}</Typography>
                 </Box>
                 <Box display="flex" gap={1}>
                   <Typography variant="subtitle1">{`Color:`}</Typography>
-                  <Typography>{` ${moto.color}`}</Typography>
+                  <Typography>{` ${carro.color}`}</Typography>
                 </Box>
                 <Box display="flex" gap={1}>
-                  <Typography variant="subtitle1">{`Número de veloocidad:`}</Typography>
-                  <Typography>{` ${moto.numeroVelocidad}`}</Typography>
+                  <Typography variant="subtitle1">{`Número de velocidad:`}</Typography>
+                  <Typography>{` ${carro.numeroVelocidad}`}</Typography>
                 </Box>
                 <Box display="flex" gap={1}>
                   <Typography variant="subtitle1">{`Kilometraje:`}</Typography>
-                  <Typography>{` ${moto.kilometraje}`}</Typography>
+                  <Typography>{` ${carro.kilometraje}`}</Typography>
                 </Box>
               </CardContent>
             </Card>
@@ -174,16 +176,16 @@ export const CardView = () => {
 
       <ModalCompra
         modalOpen={modalOpen}
-        selectedVehicle={selectedMoto}
+        selectedVehicle={selectedCarro}
         handleCloseModal={handleCloseModal}
-        vehicleType="moto"
+        vehicleType="carro"
       />
-      <ModalEditMoto
-        selectedMoto={selectedMoto}
+      {/* <ModalEditCarro
+        selectedCarro={selectedCarro}
         isEditModalOpen={isEditModalOpen}
         handleCloseModal={handleCloseModalEdit}
-        handleUpdateMoto={handleUpdateField}
-      />
+        handleUpdateCarro={handleUpdateField}
+      /> */}
     </>
   );
 };
