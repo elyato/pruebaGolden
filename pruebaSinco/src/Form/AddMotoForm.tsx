@@ -51,7 +51,7 @@ const AddMotoForm = () => {
       <PageHeader
         title="Agregar Nueva Moto"
         buttonBack={
-          <IconButton component={Link} to="/" sx={{ color: "#546e7a" }}>
+          <IconButton component={Link} to="/moto" sx={{ color: "#546e7a" }}>
             <ArrowBackIcon />
           </IconButton>
         }
@@ -60,7 +60,6 @@ const AddMotoForm = () => {
         sx={{
           width: "600px",
           height: "100%",
-
           overflow: "hidden",
         }}
       >

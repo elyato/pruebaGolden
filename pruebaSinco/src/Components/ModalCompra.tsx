@@ -16,32 +16,26 @@ interface Props {
   selectedMoto: vehiculo | null;
   modalOpen: boolean;
   handleCloseModal: () => void;
-  textField1Value: string;
-  textField2Value: string;
-  setTextField1Value: Dispatch<SetStateAction<string>>;
-  setTextField2Value: Dispatch<SetStateAction<string>>;
-  handleUpdateMoto: (
-    motoId: number,
-    fieldName: string,
-    newValue: any
-  ) => Promise<void>;
+  // handleUpdateMoto: (
+  //   motoId: number,
+  //   fieldName: string,
+  //   newValue: any
+  // ) => Promise<void>;
 }
 
 export const ModalCompra = ({
   modalOpen,
   handleCloseModal,
-  textField1Value,
-  textField2Value,
-  setTextField1Value,
-  setTextField2Value,
-  handleUpdateMoto,
+
+  // handleUpdateMoto,
   selectedMoto,
 }: Props) => {
   const [newColor, setNewColor] = useState("");
   const handleColorChange = (event) => {
     setNewColor(event.target.value);
   };
-
+  const [textField1Value, setTextField1Value] = useState("");
+  const [textField2Value, setTextField2Value] = useState("");
   const data = useFetchMotoData();
   const { deleteMoto } = data;
 

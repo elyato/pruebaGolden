@@ -1,36 +1,26 @@
-import { Button, Box, Stack, Card } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Box, Stack, Typography } from "@mui/material";
 import TwoWheelerIcon from "@mui/icons-material/TwoWheeler";
 import { PageHeader } from "@sinco/react";
-import AddIcon from "@mui/icons-material/Add";
 import { TablaPrecios } from "./Components/TablaPrecios";
 import { CardSelecVehiculo } from "./Components/CardSelecVehiculo";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
-import { AutoCompleteVehiculo } from "./AutoCompleteVehiculo";
 export const Concesionario = () => {
   return (
     <>
       <PageHeader
-        title="Concesionario El Yato"
-        actions={
-          <Button
-            color="success"
-            variant="contained"
-            component={Link}
-            to="/agregarMoto"
-            size="small"
-            startIcon={<AddIcon />}
-          >
-            Agregar Vehículo
-          </Button>
-         }
+        buttonBack={
+          <Box display="flex" gap={1} alignItems="center">
+            <img src="./src/assets/LogoConce.svg" alt="" />
+            <Typography variant="h3">YATO MOTORS</Typography>
+          </Box>
+        }
       />
-      <Box display="flex" width="100%" height="100%">
+      <Box display="flex" width="100%" height="100%" justifyContent="space-around">
         <Stack>
           <CardSelecVehiculo
             image="./src/assets/imgCar.svg"
             router="/carro"
-            title="Carro"
+            title="Carros"
             textButton="Ver carro"
             icon={<DirectionsCarIcon />}
           />
@@ -38,12 +28,12 @@ export const Concesionario = () => {
           <CardSelecVehiculo
             image="./src/assets/ImageMoto.svg"
             router="/moto"
-            title="Moto"
+            title="Motos"
             textButton="Ver motos"
             icon={<TwoWheelerIcon />}
           />
         </Stack>
-          <TablaPrecios />
+        <TablaPrecios />
       </Box>
     </>
   );

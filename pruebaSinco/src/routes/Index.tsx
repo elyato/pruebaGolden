@@ -1,7 +1,7 @@
 import { RouterProvider, createHashRouter } from "react-router-dom";
 import { Concesionario } from "../Concesionario";
-import { FormMoto } from "../Form/FormMoto";
 import AddMotoForm from "../Form/AddMotoForm";
+import { CardView } from "../Components/CardView";
 
 const router = createHashRouter([
   {
@@ -10,7 +10,7 @@ const router = createHashRouter([
   },
   {
     path: "/moto",
-    element: <FormMoto />,
+    element: <CardView />,
   },
   {
     path: "/agregarMoto",
