@@ -19,6 +19,8 @@ interface Props {
   vehicleType: "moto" | "carro";
 }
 
+// ... (código anterior)
+
 export const ModalCompra = ({
   modalOpen,
   handleCloseModal,
@@ -32,6 +34,9 @@ export const ModalCompra = ({
 
   const { addCliente } = useClientes();
   const { eliminarCarro } = useFetchCarroData();
+
+  const isConfirmButtonDisabled =
+    textField1Value.trim() === "" || textField2Value.trim() === "";
 
   const handleConfirmCompra = async () => {
     if (selectedVehicle) {
@@ -103,7 +108,7 @@ export const ModalCompra = ({
             <Button
               variant="contained"
               onClick={handleConfirmCompra}
-              disabled={textField1Value === "" || textField2Value === ""}
+              disabled={isConfirmButtonDisabled}
             >
               Confirmar compra
             </Button>

@@ -3,6 +3,7 @@ import { Concesionario } from "../Concesionario";
 import AddMotoForm from "../Form/AddMotoForm";
 import { CardView } from "../Components/CardView";
 import { CardViewCarro } from "../Components/CardViewCarro";
+import { AddCarroForm } from "../Form/AddCarroForm";
 
 const router = createHashRouter([
   {
@@ -16,6 +17,10 @@ const router = createHashRouter([
   {
     path: "/agregarMoto",
     element: <AddMotoForm />,
+  },
+  {
+    path: "/agregarCarro",
+    element: <AddCarroForm />,
   },
 
   {

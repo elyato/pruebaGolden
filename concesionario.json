@@ -7,6 +7,33 @@
       "kilometraje": 50000,
       "precio": 20000,
       "fechaRegistro": "2023-12-14T08:00:00.000Z"
+    },
+    {
+      "modelo": "asd",
+      "color": "asd",
+      "kilometraje": "0as",
+      "precio": "0asd",
+      "cilindraje": "asd",
+      "numeroVelocidad": "0asd",
+      "id": 1
+    },
+    {
+      "modelo": "as",
+      "color": "as",
+      "kilometraje": "0as",
+      "precio": "0as",
+      "cilindraje": "as",
+      "numeroVelocidad": "0s",
+      "id": 2
+    },
+    {
+      "modelo": "as",
+      "color": "as",
+      "kilometraje": "0as",
+      "precio": "0as",
+      "cilindraje": "as",
+      "numeroVelocidad": "0as",
+      "id": 3
     }
   ],
   "moto": [
@@ -56,6 +83,24 @@
       "cilindraje": "2",
       "numeroVelocidad": "02",
       "id": 19
+    },
+    {
+      "modelo": "s",
+      "color": "s",
+      "kilometraje": "0s",
+      "precio": "0s",
+      "cilindraje": "s",
+      "numeroVelocidad": "0s",
+      "id": 20
+    },
+    {
+      "modelo": "s",
+      "color": "s",
+      "kilometraje": "s0",
+      "precio": "0s",
+      "cilindraje": "s",
+      "numeroVelocidad": "s0",
+      "id": 21
     }
   ],
   "clientes": [

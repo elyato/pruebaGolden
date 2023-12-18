@@ -19,7 +19,6 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { PageHeader } from "@sinco/react";
 import { Link } from "react-router-dom";
 import { ModalCompra } from "./ModalCompra";
-import { ModalEditCarro } from "./ModalEditCarro"; // Import the car modal
 import useFetchCarroData from "../hook/useCarro";
 import { vehiculo } from "../interfaces/Data";
 import { ModalEditVehiculo } from "./ModalEditVehiculo";
@@ -112,7 +111,7 @@ export const CardViewCarro = () => {
         <Button
           variant="contained"
           component={Link}
-          to="/agregarMoto"
+          to="/agregarCarro"
           size="small"
           startIcon={<AddCircleOutlineIcon />}
         >

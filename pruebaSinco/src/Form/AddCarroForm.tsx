@@ -11,57 +11,43 @@ import {
 import { PageHeader, ToastNotification } from "@sinco/react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Link } from "react-router-dom";
-import useFetchMotoData from "../hook/useMoto";
+import useFetchCarroData from "../hook/useCarro";
 
-const AddMotoForm = () => {
-  const { addMoto } = useFetchMotoData();
+export const AddCarroForm = () => {
+  const { agregarCarro } = useFetchCarroData();
   const [isActualizo, setIsActualizo] = useState(false);
-  const [newMoto, setNewMoto] = useState({
+  const [newCarro, setNewCarro] = useState({
     modelo: "",
     color: "",
     kilometraje: 0,
     precio: 0,
-    cilindraje: "",
-    numeroVelocidad: 0,
   });
 
   const handleInputChange = (field: string) => (event: any) => {
-    let value = event.target.value;
-
-    if (
-      field === "kilometraje" ||
-      field === "numeroVelocidad" ||
-      field === "precio"
-    ) {
-      value = value.replace(/[^0-9]/g, "");
-    }
-
-    setNewMoto((prevMoto) => ({
-      ...prevMoto,
-      [field]: value,
+    setNewCarro((prevCarro) => ({
+      ...prevCarro,
+      [field]: event.target.value,
     }));
   };
 
-  const handleAddMoto = async () => {
-    const adMoto = await addMoto(newMoto);
-    setIsActualizo(adMoto);
+  const handleAddCarro = async () => {
+    const addCarro = await agregarCarro(newCarro);
+    setIsActualizo(addCarro);
 
-    setNewMoto({
+    setNewCarro({
       modelo: "",
       color: "",
       kilometraje: 0,
       precio: 0,
-      cilindraje: "",
-      numeroVelocidad: 0,
     });
   };
 
   return (
     <>
       <PageHeader
-        title="Agregar Nueva Moto"
+        title="Agregar Nuevo Carro"
         buttonBack={
-          <IconButton component={Link} to="/moto" sx={{ color: "#546e7a" }}>
+          <IconButton component={Link} to="/carro" sx={{ color: "#546e7a" }}>
             <ArrowBackIcon />
           </IconButton>
         }
@@ -87,24 +73,24 @@ const AddMotoForm = () => {
             />
           )}
           <Typography variant="body1">
-            Completa el formulario con los detalles de la nueva moto.
+            Completa el formulario con los detalles del nuevo carro.
           </Typography>
           <Box sx={{ display: "flex", gap: 1 }}>
             <TextField
               label="Modelo"
-              value={newMoto.modelo}
+              value={newCarro.modelo}
               onChange={handleInputChange("modelo")}
               margin="normal"
             />
             <TextField
               label="Color"
-              value={newMoto.color}
+              value={newCarro.color}
               onChange={handleInputChange("color")}
               margin="normal"
             />
             <TextField
               label="Kilometraje"
-              value={newMoto.kilometraje}
+              value={newCarro.kilometraje}
               onChange={handleInputChange("kilometraje")}
               margin="normal"
             />
@@ -112,42 +98,26 @@ const AddMotoForm = () => {
           <Box display="flex" gap={1}>
             <TextField
               label="Precio"
-              value={newMoto.precio}
+              value={newCarro.precio}
               onChange={handleInputChange("precio")}
-              margin="normal"
-            />
-            <TextField
-              label="Cilindraje"
-              value={newMoto.cilindraje}
-              onChange={handleInputChange("cilindraje")}
-              margin="normal"
-            />
-            <TextField
-              label="Número de Velocidad"
-              value={newMoto.numeroVelocidad}
-              onChange={handleInputChange("numeroVelocidad")}
               margin="normal"
             />
           </Box>
           <Button
             variant="contained"
             color="primary"
-            onClick={handleAddMoto}
+            onClick={handleAddCarro}
             disabled={
-              newMoto.modelo === "" ||
-              newMoto.color === "" ||
-              newMoto.precio === 0 ||
-              newMoto.cilindraje === "" ||
-              newMoto.numeroVelocidad === 0
+              newCarro.modelo === "" ||
+              newCarro.color === "" ||
+              newCarro.precio === 0
             }
             sx={{ mt: 2, gridColumn: "span 2" }}
           >
-            Agregar Moto
+            Agregar Carro
           </Button>
         </CardContent>
       </Card>
     </>
   );
 };
-
-export default AddMotoForm;
