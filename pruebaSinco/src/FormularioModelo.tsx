@@ -12,7 +12,7 @@ export const FormularioModelo = () => {
     fechaRegistro: "",
   });
 
-  const handleInputChange = (field) => (event) => {
+  const handleInputChange = (field: string) => (event: any) => {
     setModeloData((prevData) => ({
       ...prevData,
       [field]: event.target.value,
@@ -25,7 +25,7 @@ export const FormularioModelo = () => {
 
   return (
     <Card>
-        <CardHeader title="Agregar nuevo modelo" />
+      <CardHeader title="Agregar nuevo modelo" />
       <TextField
         label="Modelo"
         value={modeloData.modelo}
@@ -50,7 +50,7 @@ export const FormularioModelo = () => {
         onChange={handleInputChange("kilometraje")}
         margin="normal"
       />
-      
+
       <Button variant="contained" onClick={handleAddModelo}>
         Agregar Modelo
       </Button>

@@ -67,8 +67,8 @@ export const CuotasTable: React.FC<CuotasTableProps> = ({
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Cuota sin Interés</TableCell>
               <TableCell>Num Cuota</TableCell>
+              <TableCell>Cuota sin Interés</TableCell>
               <TableCell>Saldo Pendiente</TableCell>
               <TableCell>Intereses</TableCell>
               <TableCell>Cuota con Interés</TableCell>
@@ -77,8 +77,8 @@ export const CuotasTable: React.FC<CuotasTableProps> = ({
           <TableBody>
             {cuotasData.map((cuota) => (
               <TableRow key={cuota.cuota}>
-                <TableCell>{cuota.cuotaInicial}</TableCell>
                 <TableCell>{cuota.cuota}</TableCell>
+                <TableCell>{cuota.cuotaInicial}</TableCell>
                 <TableCell>{cuota.saldoPendiente}</TableCell>
                 <TableCell>{cuota.cuotaInteres}</TableCell>
                 <TableCell>{cuota.cuotaPrincipal}</TableCell>

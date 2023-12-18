@@ -21,7 +21,7 @@ const AddMotoForm = () => {
     color: "",
     kilometraje: 0,
     precio: 0,
-    cilindraje: "",
+    cilindraje: 0,
     numeroVelocidad: 0,
   });
 
@@ -31,7 +31,8 @@ const AddMotoForm = () => {
     if (
       field === "kilometraje" ||
       field === "numeroVelocidad" ||
-      field === "precio"
+      field === "precio" ||
+      field === "cilindraje"
     ) {
       value = value.replace(/[^0-9]/g, "");
     }
@@ -51,7 +52,7 @@ const AddMotoForm = () => {
       color: "",
       kilometraje: 0,
       precio: 0,
-      cilindraje: "",
+      cilindraje: 0,
       numeroVelocidad: 0,
     });
   };
@@ -137,7 +138,7 @@ const AddMotoForm = () => {
               newMoto.modelo === "" ||
               newMoto.color === "" ||
               newMoto.precio === 0 ||
-              newMoto.cilindraje === "" ||
+              newMoto.cilindraje === 0 ||
               newMoto.numeroVelocidad === 0
             }
             sx={{ mt: 2, gridColumn: "span 2" }}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   Box,
   Button,
@@ -86,15 +86,11 @@ export const ModalCompra = ({
     setIsBuyingInInstallments(true);
   };
 
-  const handleInstallmentsFormChange = (field) => (event) => {
+  const handleInstallmentsFormChange = (field: string) => (event: any) => {
     setInstallmentsFormData({
       ...installmentsFormData,
       [field]: event.target.value,
     });
-  };
-
-  const handleInstallmentsConfirm = () => {
-    setIsBuyingInInstallments(false);
   };
 
   return (

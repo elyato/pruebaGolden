@@ -4,7 +4,7 @@ export interface Moto {
   color: string;
   kilometraje: number;
   precio: number;
-  cilindraje?: string;
+  cilindraje?: number;
   numeroVelocidad?: number;
   image: string;
 }

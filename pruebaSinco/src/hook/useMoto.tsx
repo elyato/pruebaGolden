@@ -44,9 +44,15 @@ const useFetchMotoData = () => {
   );
 
   const addMoto = async (newMotoData: Omit<Moto, "id">) => {
+    debugger;
     try {
+      if (newMotoData.cilindraje > 400) {
+        console.error(
+          "Error: No se permite agregar motos con cilindraje superior a 400cc."
+        );
+        return false;
+      }
       if (newMotoData.kilometraje !== 0) {
-        // Consulta la data de precios
         const preciosData = queryClient.getQueryData<Precios[]>("preciosData");
         console.log(preciosData);
 

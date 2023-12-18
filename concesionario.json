@@ -138,20 +138,11 @@
     {
       "modelo": "ns",
       "color": "rojo",
-      "kilometraje": "0",
-      "precio": "1000000",
-      "cilindraje": "200cc",
+      "kilometraje": "100",
+      "precio": "20000",
+      "cilindraje": "300",
       "numeroVelocidad": "5",
       "id": 27
-    },
-    {
-      "modelo": "Ns",
-      "color": "rojo",
-      "kilometraje": "0",
-      "precio": "10000000",
-      "cilindraje": "100cc",
-      "numeroVelocidad": "5",
-      "id": 28
     }
   ],
   "clientes": [
@@ -239,6 +230,36 @@
       "nombreCompleto": "as",
       "cedula": "as",
       "id": 17
+    },
+    {
+      "nombreCompleto": " cristian",
+      "cedula": "david",
+      "id": 18
+    },
+    {
+      "nombreCompleto": "asd",
+      "cedula": "asd",
+      "id": 19
+    },
+    {
+      "nombreCompleto": "daniel.acosta",
+      "cedula": "1234",
+      "id": 20
+    },
+    {
+      "nombreCompleto": "asd",
+      "cedula": "123",
+      "id": 21
+    },
+    {
+      "nombreCompleto": "señor Didier",
+      "cedula": "123123",
+      "id": 22
+    },
+    {
+      "nombreCompleto": "Santiago Rodriguez",
+      "cedula": "54565",
+      "id": 23
     }
   ],
   "precios": [
@@ -296,6 +317,24 @@
       "kilometraje": 0,
       "fechaRegistro": "2023-12-18 08:56:43",
       "id": 6
+    }
+  ],
+  "Modelos": [
+    {
+      "id": 0,
+      "Modelo": "Sedan"
+    },
+    {
+      "id": 1,
+      "Modelo": "MT-09"
+    },
+    {
+      "id": 2,
+      "Modelo": "MT-03"
+    },
+    {
+      "id": 3,
+      "Modelo": "Renault-3"
     }
   ]
 }

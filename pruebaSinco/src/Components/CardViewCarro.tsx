@@ -28,7 +28,7 @@ export const CardViewCarro = () => {
   const { carroData, actualizarCarro } = data;
 
   const [modalOpen, setModalOpen] = useState(false);
-  const [selectedCarro, setSelectedCarro] = useState(null);
+  const [selectedCarro, setSelectedCarro] = useState<Carro>(null);
   const [cardCount, setCardCount] = useState(0);
   const [filteredCarros, setFilteredCarros] = useState([]);
   const [isEditModalOpen, setEditModalOpen] = useState(false);
