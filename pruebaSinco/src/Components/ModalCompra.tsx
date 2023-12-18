@@ -39,6 +39,7 @@ export const ModalCompra = ({
     textField1Value.trim() === "" || textField2Value.trim() === "";
 
   const handleConfirmCompra = async () => {
+    debugger
     if (selectedVehicle) {
       try {
         const newClient = {

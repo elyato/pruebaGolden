@@ -49,7 +49,7 @@
     },
     {
       "modelo": "Ns200",
-      "color": "Amarilla",
+      "color": "azul",
       "kilometraje": "0",
       "precio": "2000",
       "cilindraje": "200cc",
@@ -95,12 +95,39 @@
     },
     {
       "modelo": "s",
-      "color": "s",
+      "color": "rojo",
       "kilometraje": "s0",
       "precio": "0s",
       "cilindraje": "s",
       "numeroVelocidad": "s0",
       "id": 21
+    },
+    {
+      "modelo": "ns",
+      "color": "red",
+      "kilometraje": "0",
+      "precio": "0",
+      "cilindraje": "200",
+      "numeroVelocidad": "10",
+      "id": 22
+    },
+    {
+      "modelo": "MT-09",
+      "color": "rojo",
+      "kilometraje": "100",
+      "precio": "18000",
+      "cilindraje": "200cc",
+      "numeroVelocidad": "0",
+      "id": 23
+    },
+    {
+      "modelo": "MT-09",
+      "color": "amarillo",
+      "kilometraje": "100",
+      "precio": "18500",
+      "cilindraje": "200cc",
+      "numeroVelocidad": "5",
+      "id": 24
     }
   ],
   "clientes": [
@@ -173,6 +200,11 @@
       "nombreCompleto": "cristian david lozano cifuentes",
       "cedula": "1024461570",
       "id": 14
+    },
+    {
+      "nombreCompleto": "cristian",
+      "cedula": "123",
+      "id": 15
     }
   ],
   "precios": [
@@ -199,6 +231,29 @@
       "kilometraje": 0,
       "precio": 20000,
       "fechaRegistro": "2023-12-14T08:00:00.000Z"
+    },
+    {
+      "modelo": "Sinco",
+      "precio": "02",
+      "color": "2",
+      "kilometraje": "02",
+      "id": 3
+    },
+    {
+      "modelo": "s",
+      "precio": "0s2",
+      "color": "2",
+      "kilometraje": "02",
+      "fechaRegistro": "2023-12-18T13:10:06.056Z",
+      "id": 4
+    },
+    {
+      "modelo": "s",
+      "precio": "0s2",
+      "color": "2",
+      "kilometraje": "02",
+      "fechaRegistro": "2023-12-18 08:11:45",
+      "id": 5
     }
   ]
 }

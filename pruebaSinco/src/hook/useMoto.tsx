@@ -1,7 +1,7 @@
 import { useQuery, useMutation, useQueryClient } from "react-query";
 import axios from "axios";
 import { Alert } from "@mui/material";
-import { vehiculo } from "../interfaces/Data";
+import { Precios, vehiculo } from "../interfaces/Data";
 
 const useFetchMotoData = () => {
   const apiMotoUrl = "http://localhost:3000/moto";
@@ -44,17 +44,40 @@ const useFetchMotoData = () => {
   );
 
   const addMoto = async (newMotoData: Omit<vehiculo, "id">) => {
+    debugger;
     try {
-      if (motoData.length <= 14) {
-        await addMotoMutation.mutateAsync(newMotoData);
-        return true;
+      if (newMotoData.kilometraje !== 0) {
+        // Consulta la data de precios
+        const preciosData = queryClient.getQueryData<Precios[]>("preciosData");
+        console.log(preciosData);
+
+        if (preciosData && preciosData.length > 0) {
+          const modeloBase = preciosData.find(
+            (precio) => precio.modelo === newMotoData.modelo
+          );
+
+          if (modeloBase) {
+            const precioCalculado = modeloBase.precio * 0.85;
+
+            if (newMotoData.precio == precioCalculado) {
+              console.error(
+                "Error: El precio de la moto no puede ser igual al 85% del precio base."
+              );
+              return false;
+            }
+          }
+        }
       }
+
+      // Si todo está bien, agrega la moto
+      await addMotoMutation.mutateAsync(newMotoData);
+      return true;
     } catch (error) {
       console.error("Error al agregar la moto:", error);
       return false;
     }
-    return false;
   };
+
   const updateMoto = async (motoId: number, newData: Partial<vehiculo>) => {
     try {
       await updateMotoMutation.mutateAsync({ motoId, newData });

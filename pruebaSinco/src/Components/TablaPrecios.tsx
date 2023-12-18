@@ -20,7 +20,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { usePrecios } from "../hook/usePrecios";
 import { Precios } from "../interfaces/Data";
 
-export const TablaPrecios = ({}) => {
+export const TablaPrecios = ({ handleShowForm }) => {
   const data = usePrecios();
   const { dataPrecios } = data;
   const [selectedModelo, setSelectedModelo] = useState<Precios | null>(null);
@@ -93,7 +93,7 @@ export const TablaPrecios = ({}) => {
           </Table>
         </TableContainer>
         <CardActions>
-          <Button variant="contained">Agregar nuevo modelo</Button>
+          <Button variant="contained" onClick={handleShowForm}>Agregar nuevo modelo</Button>
         </CardActions>
       </Card>
     </>

@@ -4,7 +4,14 @@ import { PageHeader } from "@sinco/react";
 import { TablaPrecios } from "./Components/TablaPrecios";
 import { CardSelecVehiculo } from "./Components/CardSelecVehiculo";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
+import { useState } from "react";
+import { FormularioModelo } from "./FormularioModelo";
 export const Concesionario = () => {
+  const [isNewModelo, setIsNewModelo] = useState(false);
+
+  const handleShowForm = () => {
+    setIsNewModelo(true);
+  };
   return (
     <>
       <PageHeader
@@ -15,7 +22,12 @@ export const Concesionario = () => {
           </Box>
         }
       />
-      <Box display="flex" width="100%" height="100%" justifyContent="space-around">
+      <Box
+        display="flex"
+        width="100%"
+        height="100%"
+        justifyContent="space-around"
+      >
         <Stack>
           <CardSelecVehiculo
             image="./src/assets/imgCar.svg"
@@ -33,7 +45,10 @@ export const Concesionario = () => {
             icon={<TwoWheelerIcon />}
           />
         </Stack>
-        <TablaPrecios />
+        <Stack height="100%" gap={2}>
+          <TablaPrecios handleShowForm={handleShowForm} />
+          {isNewModelo && <FormularioModelo />}
+        </Stack>
       </Box>
     </>
   );

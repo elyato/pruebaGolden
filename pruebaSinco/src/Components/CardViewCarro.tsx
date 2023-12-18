@@ -153,17 +153,10 @@ export const CardViewCarro = () => {
               </CardActions>
               <CardContent>
                 <Box display="flex" gap={1}>
-                  <Typography variant="subtitle1">{`Cilindraje:`}</Typography>
-                  <Typography>{` ${carro.cilindraje}`}</Typography>
-                </Box>
-                <Box display="flex" gap={1}>
                   <Typography variant="subtitle1">{`Color:`}</Typography>
                   <Typography>{` ${carro.color}`}</Typography>
                 </Box>
-                <Box display="flex" gap={1}>
-                  <Typography variant="subtitle1">{`Número de velocidad:`}</Typography>
-                  <Typography>{` ${carro.numeroVelocidad}`}</Typography>
-                </Box>
+
                 <Box display="flex" gap={1}>
                   <Typography variant="subtitle1">{`Kilometraje:`}</Typography>
                   <Typography>{` ${carro.kilometraje}`}</Typography>
