@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Button,
@@ -6,20 +7,20 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { useState } from "react";
+
+import { useClientes } from "../hook/useClientes";
+
+import { Carro, Moto } from "../interfaces/Data";
 import useFetchMotoData from "../hook/useMoto";
-import useClientes from "../hook/useClientes";
-import { vehiculo } from "../interfaces/Data";
 import useFetchCarroData from "../hook/useCarro";
+import { CuotasTable } from "./TablaDecuentas";
 
 interface Props {
-  selectedVehicle: vehiculo | null;
+  selectedVehicle: Carro | Moto;
   modalOpen: boolean;
   handleCloseModal: () => void;
   vehicleType: "moto" | "carro";
 }
-
-// ... (código anterior)
 
 export const ModalCompra = ({
   modalOpen,
@@ -27,10 +28,15 @@ export const ModalCompra = ({
   selectedVehicle,
   vehicleType,
 }: Props) => {
-  const [textField1Value, setTextField1Value] = useState("");
-  const [textField2Value, setTextField2Value] = useState("");
   const data = useFetchMotoData();
   const { deleteMoto } = data;
+  const [textField1Value, setTextField1Value] = useState("");
+  const [textField2Value, setTextField2Value] = useState("");
+  const [isBuyingInInstallments, setIsBuyingInInstallments] = useState(false);
+  const [installmentsFormData, setInstallmentsFormData] = useState({
+    precio: 0,
+    numInstallments: 1,
+  });
 
   const { addCliente } = useClientes();
   const { eliminarCarro } = useFetchCarroData();
@@ -38,8 +44,20 @@ export const ModalCompra = ({
   const isConfirmButtonDisabled =
     textField1Value.trim() === "" || textField2Value.trim() === "";
 
+  useEffect(() => {
+    const fetchData = async () => {
+      if (selectedVehicle) {
+        setInstallmentsFormData({
+          precio: selectedVehicle.precio,
+          numInstallments: 1,
+        });
+      }
+    };
+
+    fetchData();
+  }, [selectedVehicle]);
+
   const handleConfirmCompra = async () => {
-    debugger
     if (selectedVehicle) {
       try {
         const newClient = {
@@ -64,6 +82,21 @@ export const ModalCompra = ({
     }
   };
 
+  const handleBuyInInstallments = () => {
+    setIsBuyingInInstallments(true);
+  };
+
+  const handleInstallmentsFormChange = (field) => (event) => {
+    setInstallmentsFormData({
+      ...installmentsFormData,
+      [field]: event.target.value,
+    });
+  };
+
+  const handleInstallmentsConfirm = () => {
+    setIsBuyingInInstallments(false);
+  };
+
   return (
     <Modal
       open={modalOpen}
@@ -74,7 +107,7 @@ export const ModalCompra = ({
         alignItems: "center",
       }}
     >
-      <div>
+      <>
         <Stack
           width={600}
           p={2}
@@ -106,6 +139,7 @@ export const ModalCompra = ({
             >
               Cancelar
             </Button>
+            <Button onClick={handleBuyInInstallments}>Comprar a cuotas</Button>
             <Button
               variant="contained"
               onClick={handleConfirmCompra}
@@ -114,8 +148,33 @@ export const ModalCompra = ({
               Confirmar compra
             </Button>
           </Box>
+          {isBuyingInInstallments && (
+            <>
+              <Typography variant="subtitle1">Compra a cuotas</Typography>
+              <Typography>Precio: ${installmentsFormData.precio}</Typography>
+              <TextField
+                label="Número de coutas"
+                type="number"
+                value={installmentsFormData.numInstallments}
+                onChange={handleInstallmentsFormChange("numInstallments")}
+                fullWidth
+                margin="dense"
+              />
+              <Box display="flex" justifyContent="space-between">
+                <Button onClick={() => setIsBuyingInInstallments(false)}>
+                  Cancelar
+                </Button>
+
+                <CuotasTable
+                  interes={0.5}
+                  numCuotas={installmentsFormData.numInstallments}
+                  valor={installmentsFormData.precio}
+                />
+              </Box>
+            </>
+          )}
         </Stack>
-      </div>
+      </>
     </Modal>
   );
 };

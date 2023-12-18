@@ -22,7 +22,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import { ModalCompra } from "./ModalCompra";
 import { Link } from "react-router-dom";
 import { ModalEditVehiculo } from "./ModalEditVehiculo";
-import { vehiculo } from "../interfaces/Data";
+import { Moto} from "../interfaces/Data";
 
 export const CardView = () => {
   const data = useFetchMotoData();
@@ -45,11 +45,11 @@ export const CardView = () => {
     }
   }, [selectedMoto, motoData]);
 
-  const handleOpenModal = (moto: vehiculo) => {
+  const handleOpenModal = (moto: Moto) => {
     setModalOpen(true);
     setSelectedMoto(moto);
   };
-  const handleOpenModalEdit = (moto: vehiculo) => {
+  const handleOpenModalEdit = (moto: Moto) => {
     setEditModalOpen(true);
     setSelectedMoto(moto);
   };

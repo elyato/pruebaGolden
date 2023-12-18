@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { TextField, Typography, Box, Button, Modal } from "@mui/material";
-import { vehiculo } from "../interfaces/Data";
+import { Carro, Moto } from "../interfaces/Data";
 interface porps {
-  selectedMoto: vehiculo | null;
+  selectedMoto: Moto | Carro;
   isEditModalOpen: boolean;
   handleCloseModal: () => void;
   handleUpdateMoto: (

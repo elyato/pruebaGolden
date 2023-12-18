@@ -2,10 +2,10 @@
 import { useQuery, useMutation, useQueryClient } from "react-query";
 import axios from "axios";
 import { Alert } from "@mui/material";
-import { vehiculo } from "../interfaces/Data";
+import { Carro } from "../interfaces/Data";
 
 const useFetchCarroData = () => {
-  const apiCarroUrl = "http://localhost:3000/carro"; // URL para los datos de carros
+  const apiCarroUrl = "http://localhost:3000/carros"; // URL para los datos de carros
 
   // Crear una instancia del cliente de consulta
   const queryClient = useQueryClient();
@@ -15,7 +15,7 @@ const useFetchCarroData = () => {
     data: carroData = [],
     isLoading: loading,
     error,
-  } = useQuery<vehiculo[]>({
+  } = useQuery<Carro[]>({
     queryKey: "carroData",
     queryFn: async () => {
       const response = await axios.get(apiCarroUrl);
@@ -35,7 +35,7 @@ const useFetchCarroData = () => {
       nuevosDatos,
     }: {
       carroId: number;
-      nuevosDatos: Partial<vehiculo>;
+      nuevosDatos: Partial<Carro>;
     }) => axios.patch(`${apiCarroUrl}/${carroId}`, nuevosDatos),
     {
       onSuccess: () => {
@@ -46,7 +46,7 @@ const useFetchCarroData = () => {
 
   // Crear una mutación para agregar nuevos datos de carros
   const agregarCarroMutacion = useMutation(
-    (nuevosDatosCarro: Omit<vehiculo, "id">) =>
+    (nuevosDatosCarro: Omit<Carro, "id">) =>
       axios.post(apiCarroUrl, nuevosDatosCarro),
     {
       onSuccess: () => {
@@ -55,7 +55,7 @@ const useFetchCarroData = () => {
     }
   );
 
-  const agregarCarro = async (nuevosDatosCarro: Omit<vehiculo, "id">) => {
+  const agregarCarro = async (nuevosDatosCarro: Omit<Carro, "id">) => {
     try {
       if (carroData.length <= 9) {
         await agregarCarroMutacion.mutateAsync(nuevosDatosCarro);
@@ -70,7 +70,7 @@ const useFetchCarroData = () => {
 
   const actualizarCarro = async (
     carroId: number,
-    nuevosDatos: Partial<vehiculo>
+    nuevosDatos: Partial<Carro>
   ) => {
     try {
       await actualizarCarroMutacion.mutateAsync({ carroId, nuevosDatos });

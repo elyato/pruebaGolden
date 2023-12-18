@@ -20,7 +20,7 @@ import { PageHeader } from "@sinco/react";
 import { Link } from "react-router-dom";
 import { ModalCompra } from "./ModalCompra";
 import useFetchCarroData from "../hook/useCarro";
-import { vehiculo } from "../interfaces/Data";
+import { Carro } from "../interfaces/Data";
 import { ModalEditVehiculo } from "./ModalEditVehiculo";
 
 export const CardViewCarro = () => {
@@ -45,12 +45,12 @@ export const CardViewCarro = () => {
     }
   }, [selectedCarro, carroData]);
 
-  const handleOpenModal = (carro: vehiculo) => {
+  const handleOpenModal = (carro: Carro) => {
     setModalOpen(true);
     setSelectedCarro(carro);
   };
 
-  const handleOpenModalEdit = (carro: vehiculo) => {
+  const handleOpenModalEdit = (carro: Carro) => {
     setEditModalOpen(true);
     setSelectedCarro(carro);
   };

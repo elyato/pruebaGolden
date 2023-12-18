@@ -1,4 +1,15 @@
-export interface vehiculo {
+export interface Moto {
+  id: number;
+  modelo: string;
+  color: string;
+  kilometraje: number;
+  precio: number;
+  cilindraje?: string;
+  numeroVelocidad?: number;
+  image: string;
+}
+
+export interface Carro {
   id: number;
   modelo: string;
   color: string;

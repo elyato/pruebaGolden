@@ -1,10 +1,10 @@
 import { useQuery, useMutation, useQueryClient } from "react-query";
 import axios from "axios";
 import { Alert } from "@mui/material";
-import { Precios, vehiculo } from "../interfaces/Data";
+import { Moto, Precios } from "../interfaces/Data";
 
 const useFetchMotoData = () => {
-  const apiMotoUrl = "http://localhost:3000/moto";
+  const apiMotoUrl = "http://localhost:3000/motos";
 
   const queryClient = useQueryClient();
 
@@ -12,7 +12,7 @@ const useFetchMotoData = () => {
     data: motoData = [],
     isLoading: loading,
     error,
-  } = useQuery<vehiculo[]>({
+  } = useQuery<Moto[]>({
     queryKey: "motoData",
     queryFn: async () => {
       const response = await axios.get(apiMotoUrl);
@@ -25,7 +25,7 @@ const useFetchMotoData = () => {
   };
 
   const updateMotoMutation = useMutation(
-    ({ motoId, newData }: { motoId: number; newData: Partial<vehiculo> }) =>
+    ({ motoId, newData }: { motoId: number; newData: Partial<Moto> }) =>
       axios.patch(`${apiMotoUrl}/${motoId}`, newData),
     {
       onSuccess: () => {
@@ -35,7 +35,7 @@ const useFetchMotoData = () => {
   );
 
   const addMotoMutation = useMutation(
-    (newMotoData: Omit<vehiculo, "id">) => axios.post(apiMotoUrl, newMotoData),
+    (newMotoData: Omit<Moto, "id">) => axios.post(apiMotoUrl, newMotoData),
     {
       onSuccess: () => {
         queryClient.invalidateQueries("motoData");
@@ -43,8 +43,7 @@ const useFetchMotoData = () => {
     }
   );
 
-  const addMoto = async (newMotoData: Omit<vehiculo, "id">) => {
-    debugger;
+  const addMoto = async (newMotoData: Omit<Moto, "id">) => {
     try {
       if (newMotoData.kilometraje !== 0) {
         // Consulta la data de precios
@@ -59,7 +58,7 @@ const useFetchMotoData = () => {
           if (modeloBase) {
             const precioCalculado = modeloBase.precio * 0.85;
 
-            if (newMotoData.precio == precioCalculado) {
+            if (newMotoData.precio <= precioCalculado) {
               console.error(
                 "Error: El precio de la moto no puede ser igual al 85% del precio base."
               );
@@ -78,7 +77,7 @@ const useFetchMotoData = () => {
     }
   };
 
-  const updateMoto = async (motoId: number, newData: Partial<vehiculo>) => {
+  const updateMoto = async (motoId: number, newData: Partial<Moto>) => {
     try {
       await updateMotoMutation.mutateAsync({ motoId, newData });
     } catch (error) {

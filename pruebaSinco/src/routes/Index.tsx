@@ -1,7 +1,7 @@
 import { RouterProvider, createHashRouter } from "react-router-dom";
 import { Concesionario } from "../Concesionario";
 import AddMotoForm from "../Form/AddMotoForm";
-import { CardView } from "../Components/CardView";
+import { CardView } from "../Components/CardViewMoto";
 import { CardViewCarro } from "../Components/CardViewCarro";
 import { AddCarroForm } from "../Form/AddCarroForm";
 
