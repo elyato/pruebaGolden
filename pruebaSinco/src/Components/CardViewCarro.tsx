@@ -22,6 +22,7 @@ import { ModalCompra } from "./ModalCompra";
 import { ModalEditCarro } from "./ModalEditCarro"; // Import the car modal
 import useFetchCarroData from "../hook/useCarro";
 import { vehiculo } from "../interfaces/Data";
+import { ModalEditVehiculo } from "./ModalEditVehiculo";
 
 export const CardViewCarro = () => {
   const data = useFetchCarroData(); // Use the car data hook
@@ -180,12 +181,12 @@ export const CardViewCarro = () => {
         handleCloseModal={handleCloseModal}
         vehicleType="carro"
       />
-      {/* <ModalEditCarro
-        selectedCarro={selectedCarro}
+      <ModalEditVehiculo
+        selectedMoto={selectedCarro}
         isEditModalOpen={isEditModalOpen}
         handleCloseModal={handleCloseModalEdit}
-        handleUpdateCarro={handleUpdateField}
-      /> */}
+        handleUpdateMoto={handleUpdateField}
+      />
     </>
   );
 };

@@ -21,7 +21,7 @@ import useFetchMotoData from "../hook/useMoto";
 import EditIcon from "@mui/icons-material/Edit";
 import { ModalCompra } from "./ModalCompra";
 import { Link } from "react-router-dom";
-import { ModalEditMoto } from "./ModalEditMoto";
+import { ModalEditVehiculo } from "./ModalEditVehiculo";
 import { vehiculo } from "../interfaces/Data";
 
 export const CardView = () => {
@@ -69,7 +69,7 @@ export const CardView = () => {
     await updateMoto(motoId, { [fieldName]: newValue });
   };
 
-  const options   = motoData.map((moto) => ({
+  const options = motoData.map((moto) => ({
     label: `${moto.modelo} - ID: ${moto.id}`,
     value: moto,
   }));
@@ -178,7 +178,7 @@ export const CardView = () => {
         handleCloseModal={handleCloseModal}
         vehicleType="moto"
       />
-      <ModalEditMoto
+      <ModalEditVehiculo
         selectedMoto={selectedMoto}
         isEditModalOpen={isEditModalOpen}
         handleCloseModal={handleCloseModalEdit}

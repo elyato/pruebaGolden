@@ -11,7 +11,7 @@ interface porps {
     newValue: any
   ) => Promise<void>;
 }
-export const ModalEditMoto = ({
+export const ModalEditVehiculo = ({
   handleUpdateMoto,
   selectedMoto,
   handleCloseModal,
