@@ -153,212 +153,270 @@
       "cilindraje": "200",
       "numeroVelocidad": "5",
       "id": 28
-    },
-    {
-      "modelo": "asd",
-      "image": "",
-      "color": "asd",
-      "kilometraje": "100",
-      "precio": "1000",
-      "cilindraje": "200",
-      "numeroVelocidad": "5",
-      "id": 29
     }
   ],
   "clientes": [
     {
       "nombreCompleto": "asd",
       "cedula": "asd",
+      "fechaCompra": "",
+      "vehiculoComprado": "",
       "id": 1
     },
     {
       "nombreCompleto": "cristian",
       "cedula": "102446",
+      "fechaCompra": "",
+      "vehiculoComprado": "",
       "id": 2
     },
     {
       "nombreCompleto": "cristian",
       "cedula": "1235",
+      "fechaCompra": "",
+      "vehiculoComprado": "",
       "id": 3
     },
     {
       "nombreCompleto": "s",
       "cedula": "s",
+      "fechaCompra": "",
+      "vehiculoComprado": "",
       "id": 4
     },
     {
       "nombreCompleto": "as",
       "cedula": "12",
+      "fechaCompra": "",
+      "vehiculoComprado": "",
       "id": 5
     },
     {
       "nombreCompleto": "as",
       "cedula": "as",
+      "fechaCompra": "",
+      "vehiculoComprado": "",
       "id": 6
     },
     {
       "nombreCompleto": " ",
       "cedula": " ",
+      "fechaCompra": "",
+      "vehiculoComprado": "",
       "id": 7
     },
     {
       "nombreCompleto": "  ",
       "cedula": " ",
+      "fechaCompra": "",
+      "vehiculoComprado": "",
       "id": 8
     },
     {
       "nombreCompleto": "Sad",
       "cedula": "s",
+      "fechaCompra": "",
+      "vehiculoComprado": "",
       "id": 9
     },
     {
       "nombreCompleto": " ",
       "cedula": " ",
+      "fechaCompra": "",
+      "vehiculoComprado": "",
       "id": 10
     },
     {
       "nombreCompleto": "cristian",
       "cedula": "123",
+      "fechaCompra": "",
+      "vehiculoComprado": "",
       "id": 11
     },
     {
       "nombreCompleto": "cristian.lozano",
       "cedula": "123",
+      "fechaCompra": "",
+      "vehiculoComprado": "",
       "id": 12
     },
     {
       "nombreCompleto": "santiago",
       "cedula": "12345",
+      "fechaCompra": "",
+      "vehiculoComprado": "",
       "id": 13
     },
     {
       "nombreCompleto": "cristian david lozano cifuentes",
       "cedula": "1024461570",
+      "fechaCompra": "",
+      "vehiculoComprado": "",
       "id": 14
     },
     {
       "nombreCompleto": "cristian",
       "cedula": "123",
+      "fechaCompra": "",
+      "vehiculoComprado": "",
       "id": 15
     },
     {
       "nombreCompleto": "Fabián",
       "cedula": "666e",
+      "fechaCompra": "",
+      "vehiculoComprado": "",
       "id": 16
     },
     {
       "nombreCompleto": "as",
       "cedula": "as",
+      "fechaCompra": "",
+      "vehiculoComprado": "",
       "id": 17
     },
     {
       "nombreCompleto": " cristian",
       "cedula": "david",
+      "fechaCompra": "",
+      "vehiculoComprado": "",
       "id": 18
     },
     {
       "nombreCompleto": "asd",
       "cedula": "asd",
+      "fechaCompra": "",
+      "vehiculoComprado": "",
       "id": 19
     },
     {
       "nombreCompleto": "daniel.acosta",
       "cedula": "1234",
+      "fechaCompra": "",
+      "vehiculoComprado": "",
       "id": 20
     },
     {
       "nombreCompleto": "asd",
       "cedula": "123",
+      "fechaCompra": "",
+      "vehiculoComprado": "",
       "id": 21
     },
     {
       "nombreCompleto": "señor Didier",
       "cedula": "123123",
+      "fechaCompra": "",
+      "vehiculoComprado": "",
       "id": 22
     },
     {
       "nombreCompleto": "Santiago Rodriguez",
       "cedula": "54565",
+      "fechaCompra": "",
+      "vehiculoComprado": "",
       "id": 23
+    },
+    {
+      "nombreCompleto": "asd",
+      "cedula": "asd",
+      "fechaCompra": "",
+      "vehiculoComprado": "",
+      "id": 24
+    },
+    {
+      "nombreCompleto": "asd",
+      "cedula": "123",
+      "fechaCompra": "",
+      "vehiculoComprado": "",
+      "id": 25
+    },
+    {
+      "nombreCompleto": "eduardo",
+      "cedula": "125",
+      "fechaCompra": "",
+      "vehiculoComprado": "",
+      "id": 26
     }
   ],
   "precios": [
     {
       "id": 0,
-      "modelo": "Sedán",
-      "color": "Azul",
-      "kilometraje": 0,
+      "modelo": "Sail",
       "precio": 20000,
-      "fechaRegistro": "2023-12-14T08:00:00.000Z"
+      "fechaRegistro": "2023-12-14T08:00:00.000Z",
+      "tipo": "carro"
     },
     {
       "id": 1,
       "modelo": "MT-09",
-      "color": "Azul",
-      "kilometraje": 0,
       "precio": 20000,
-      "fechaRegistro": "2023-12-14T08:00:00.000Z"
+      "fechaRegistro": "2023-12-14T08:00:00.000Z",
+      "tipo": "moto"
     },
     {
       "id": 2,
       "modelo": "MT-03",
-      "color": "roja",
-      "kilometraje": 0,
       "precio": 20000,
-      "fechaRegistro": "2023-12-14T08:00:00.000Z"
+      "fechaRegistro": "2023-12-14T08:00:00.000Z",
+      "tipo": "moto"
     },
     {
       "modelo": "Sinco",
       "precio": "02",
-      "color": "2",
-      "kilometraje": "02",
-      "id": 3
+      "id": 3,
+      "tipo": "moto"
     },
     {
       "modelo": "s",
       "precio": "0s2",
-      "color": "2",
-      "kilometraje": "02",
       "fechaRegistro": "2023-12-18T13:10:06.056Z",
-      "id": 4
+      "id": 4,
+      "tipo": "carro"
     },
     {
       "modelo": "s",
       "precio": "0s2",
-      "color": "2",
-      "kilometraje": "02",
       "fechaRegistro": "2023-12-18 08:11:45",
-      "id": 5
+      "id": 5,
+      "tipo": "carro"
     },
     {
       "modelo": "Ns200",
       "precio": "15000",
-      "color": "amarillo",
-      "kilometraje": 0,
       "fechaRegistro": "2023-12-18 08:56:43",
-      "id": 6
-    }
-  ],
-  "Modelos": [
-    {
-      "id": 0,
-      "nombre": "Sedan"
+      "id": 6,
+      "tipo": "carro"
     },
     {
-      "id": 1,
-      "nombre": "MT-09"
+      "modelo": "AKT",
+      "precio": "20000",
+
+      "fechaRegistro": "2023-12-19T14:00:55.067Z",
+      "id": 7,
+      "tipo": "moto"
     },
     {
-      "id": 2,
-      "nombre": "MT-03"
+      "modelo": "CR4",
+      "precio": "10000",
+
+      "fechaRegistro": "2023-12-19T14:02:51.805Z",
+      "id": 8,
+      "tipo": "moto"
     },
     {
-      "id": 3,
-      "nombre": "Renault-3"
+      "modelo": "CR5",
+      "precio": "2000",
+      "fechaRegistro": "2023-12-19T14:03:44.645Z",
+      "id": 9,
+      "tipo": "moto"
     },
     {
-      "id": 4,
-      "nombre": "Ns200"
+      "modelo": "Ns160",
+      "precio": "10000",
+      "fechaRegistro": "2023-12-19T14:05:06.111Z",
+      "id": 10,
+      "tipo": "moto"
     }
   ]
 }

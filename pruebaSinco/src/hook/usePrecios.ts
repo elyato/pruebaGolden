@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "react-query";
-import { Precios, vehiculo } from "../interfaces/Data";
+import { Precios } from "../interfaces/Data";
 import axios from "axios";
 
 export const usePrecios = () => {

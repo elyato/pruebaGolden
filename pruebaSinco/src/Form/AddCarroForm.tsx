@@ -22,7 +22,6 @@ export const AddCarroForm = () => {
     kilometraje: 0,
     precio: 0,
   });
-
   const handleInputChange = (field: string) => (event: any) => {
     setNewCarro((prevCarro) => ({
       ...prevCarro,

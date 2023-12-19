@@ -21,21 +21,21 @@ export interface Carro {
 export interface Precios {
   id: number;
   modelo: string;
-  color: string;
-  kilometraje: number;
   precio: number;
   fechaRegistro: string;
   cilindraje?: string;
   numeroVelocidad?: number;
+  tipo: string;
 }
 
-export interface respuestaPeticion {
+export interface RespuestaPeticion {
   estado: boolean;
   mensaje: string;
 }
 
 export interface Cliente {
-  id: 0;
+  id: number;
   nombreCompleto: string;
   cedula: string;
 }
+

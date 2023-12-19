@@ -73,8 +73,7 @@ export const TablaPrecios = ({ handleShowForm }) => {
                 <TableCell>id</TableCell>
                 <TableCell>Producto</TableCell>
                 <TableCell>Precio</TableCell>
-                <TableCell>Color</TableCell>
-                <TableCell>Kilometraje</TableCell>
+
                 <TableCell>Fecha registro</TableCell>
               </TableRow>
             </TableHead>
@@ -84,8 +83,6 @@ export const TablaPrecios = ({ handleShowForm }) => {
                   <TableCell>{row.id}</TableCell>
                   <TableCell>{row.modelo}</TableCell>
                   <TableCell>{row.precio}</TableCell>
-                  <TableCell>{row.color}</TableCell>
-                  <TableCell>{row.kilometraje}</TableCell>
                   <TableCell>{row.fechaRegistro}</TableCell>
                 </TableRow>
               ))}

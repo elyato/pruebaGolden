@@ -5,7 +5,7 @@ import { TablaPrecios } from "./Components/Tablas/TablaPrecios";
 import { CardSelecVehiculo } from "./Components/CardSelecVehiculo";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import { useState } from "react";
-import { FormularioModelo } from "./FormularioModelo";
+import { FormularioModelo } from "./Form/FormularioModelo";
 import { Link } from "react-router-dom";
 export const Concesionario = () => {
   const [isNewModelo, setIsNewModelo] = useState(false);
@@ -24,7 +24,12 @@ export const Concesionario = () => {
         }
         title=""
         actions={
-          <Button variant="contained" color="secondary" component={Link} to="/clientes" >
+          <Button
+            variant="contained"
+            color="secondary"
+            component={Link}
+            to="/clientes"
+          >
             Ver Clientes
           </Button>
         }

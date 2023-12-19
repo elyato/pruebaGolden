@@ -7,17 +7,20 @@ import {
   CardContent,
   IconButton,
   Box,
+  MenuItem,
+  Select,
 } from "@mui/material";
 import { PageHeader, ToastNotification } from "@sinco/react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Link } from "react-router-dom";
 import useFetchMotoData from "../hook/useMoto";
-import { respuestaPeticion } from "../interfaces/Data";
+import { Precios, RespuestaPeticion } from "../interfaces/Data";
+import { usePrecios } from "../hook/usePrecios";
 
 const AddMotoForm = () => {
   const { addMoto } = useFetchMotoData();
   const [respuestaPeticion, setRespuestaPeticion] =
-    useState<respuestaPeticion>();
+    useState<RespuestaPeticion>();
   const [isActualizo, setIsActualizo] = useState(false);
   const [newMoto, setNewMoto] = useState({
     modelo: "",
@@ -28,6 +31,8 @@ const AddMotoForm = () => {
     cilindraje: 0,
     numeroVelocidad: 0,
   });
+
+  const { dataPrecios } = usePrecios();
 
   const handleInputChange = (field: string) => (event: any) => {
     let value = event.target.value;
@@ -97,12 +102,22 @@ const AddMotoForm = () => {
             Completa el formulario con los detalles de la nueva moto.
           </Typography>
           <Box sx={{ display: "flex", gap: 1 }}>
-            <TextField
+            <Select
               label="Modelo"
               value={newMoto.modelo}
               onChange={handleInputChange("modelo")}
-              margin="normal"
-            />
+              margin="dense"
+              sx={{ minWidth: 120 }}
+            >
+              {dataPrecios
+                .filter((modelo: Precios) => modelo.tipo === "moto")
+                .map((modelo: Precios) => (
+                  <MenuItem key={modelo.id} value={modelo.modelo}>
+                    {modelo.modelo}
+                  </MenuItem>
+                ))}
+            </Select>
+
             <TextField
               label="Color"
               value={newMoto.color}

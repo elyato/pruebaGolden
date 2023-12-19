@@ -9,11 +9,9 @@ import {
   Paper,
   IconButton,
   TablePagination,
-  TextField,
   Card,
 } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { Autocomplete } from "@mui/material";
 import useClientes from "../../hook/useClientes";
 import { PageHeader } from "@sinco/react";
 import { Link } from "react-router-dom";
@@ -49,18 +47,6 @@ const TablaClientes = () => {
       />
       <Card sx={{ width: 600, marginTop: 3 }}>
         <TableContainer component={Paper}>
-          <Autocomplete
-            options={dataClientes}
-            getOptionLabel={(option) => option.id}
-            style={{ width: 300, marginBottom: 20 }}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                label="Buscar cliente"
-                variant="outlined"
-              />
-            )}
-          />
           <Table>
             <TableHead>
               <TableRow>
