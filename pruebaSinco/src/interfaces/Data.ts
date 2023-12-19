@@ -37,5 +37,6 @@ export interface Cliente {
   id: number;
   nombreCompleto: string;
   cedula: string;
+  fechaCompra: string;
+  vehiculoComprado: string;
 }
-

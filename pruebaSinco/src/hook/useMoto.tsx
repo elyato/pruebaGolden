@@ -51,6 +51,7 @@ const useFetchMotoData = () => {
         mensaje: "No se pueden agregar más de 15 motos.",
       };
     }
+
     try {
       if (newMotoData.cilindraje > 400) {
         console.error(
@@ -62,6 +63,7 @@ const useFetchMotoData = () => {
             "No se permite agregar motos con cilindraje superior a 400cc",
         };
       }
+
       if (newMotoData.kilometraje !== 0) {
         const preciosData = queryClient.getQueryData<Precios[]>("preciosData");
 
@@ -83,6 +85,17 @@ const useFetchMotoData = () => {
                   "El precio de la moto no puede ser igual al 85% del precio base.",
               };
             }
+
+            if (newMotoData.precio >= modeloBase.precio) {
+              console.error(
+                "Error: El precio de la moto no puede ser mayor o igual al precio base cuando el kilometraje es diferente de 0."
+              );
+              return {
+                estado: false,
+                mensaje:
+                  "El precio de la moto no puede ser mayor o igual al precio base cuando el kilometraje es diferente de 0.",
+              };
+            }
           }
         }
       }
@@ -90,7 +103,7 @@ const useFetchMotoData = () => {
       await addMotoMutation.mutateAsync(newMotoData);
       return {
         estado: true,
-        mensaje: "Se agrego Correctamente",
+        mensaje: "Se agregó correctamente",
       };
     } catch (error) {
       console.error("Error al agregar la moto:", error);

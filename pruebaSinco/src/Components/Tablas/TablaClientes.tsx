@@ -45,7 +45,7 @@ const TablaClientes = () => {
           </IconButton>
         }
       />
-      <Card sx={{ width: 600, marginTop: 3 }}>
+      <Card sx={{ width: 800, marginTop: 3 }}>
         <TableContainer component={Paper}>
           <Table>
             <TableHead>
@@ -53,6 +53,8 @@ const TablaClientes = () => {
                 <TableCell>ID</TableCell>
                 <TableCell>Nombre Completo</TableCell>
                 <TableCell>Cédula</TableCell>
+                <TableCell>Vehiculo abquirido</TableCell>
+                <TableCell>Fecha</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -61,6 +63,8 @@ const TablaClientes = () => {
                   <TableCell>{cliente.id}</TableCell>
                   <TableCell>{cliente.nombreCompleto}</TableCell>
                   <TableCell>{cliente.cedula}</TableCell>
+                  <TableCell>{cliente.vehiculoComprado}</TableCell>
+                  <TableCell>{cliente.fechaCompra}</TableCell>
                 </TableRow>
               ))}
             </TableBody>

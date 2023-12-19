@@ -5,7 +5,6 @@ import { TablaPrecios } from "./Components/Tablas/TablaPrecios";
 import { CardSelecVehiculo } from "./Components/CardSelecVehiculo";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import { useState } from "react";
-import { FormularioModelo } from "./Form/FormularioModelo";
 import { Link } from "react-router-dom";
 export const Concesionario = () => {
   const [isNewModelo, setIsNewModelo] = useState(false);
@@ -59,7 +58,6 @@ export const Concesionario = () => {
         </Stack>
         <Stack height="100%" gap={2}>
           <TablaPrecios handleShowForm={handleShowForm} />
-          {isNewModelo && <FormularioModelo />}
         </Stack>
       </Box>
     </>

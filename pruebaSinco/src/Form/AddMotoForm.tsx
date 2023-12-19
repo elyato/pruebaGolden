@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   TextField,
   Button,
@@ -9,6 +9,7 @@ import {
   Box,
   MenuItem,
   Select,
+  Checkbox,
 } from "@mui/material";
 import { PageHeader, ToastNotification } from "@sinco/react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -19,6 +20,8 @@ import { usePrecios } from "../hook/usePrecios";
 
 const AddMotoForm = () => {
   const { addMoto } = useFetchMotoData();
+  const { dataPrecios } = usePrecios();
+
   const [respuestaPeticion, setRespuestaPeticion] =
     useState<RespuestaPeticion>();
   const [isActualizo, setIsActualizo] = useState(false);
@@ -32,7 +35,12 @@ const AddMotoForm = () => {
     numeroVelocidad: 0,
   });
 
-  const { dataPrecios } = usePrecios();
+  // Nuevo estado para habilitar/deshabilitar Precio y Cilindraje
+  const [isCheckBoxChecked, setIsCheckBoxChecked] = useState(false);
+
+  // Nuevo estado para almacenar los datos del vehículo seleccionado
+  const [selectedVehicleData, setSelectedVehicleData] =
+    useState<Precios | null>(null);
 
   const handleInputChange = (field: string) => (event: any) => {
     let value = event.target.value;
@@ -52,6 +60,29 @@ const AddMotoForm = () => {
     }));
   };
 
+  const handleCheckBoxChange = () => {
+    setIsCheckBoxChecked(!isCheckBoxChecked);
+  };
+
+  const handleSelectChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+    const selectedModel = event.target.value as string;
+
+    // Buscar los datos del vehículo seleccionado en dataPrecios
+    const selectedData = dataPrecios.find(
+      (modelo: Precios) => modelo.modelo === selectedModel
+    );
+
+    setSelectedVehicleData(selectedData);
+
+    setNewMoto((prevMoto) => ({
+      ...prevMoto,
+      modelo: selectedData?.modelo || "",
+      precio: selectedData?.precio || 0,
+
+      cilindraje: +selectedData?.cilindraje || 0,
+    }));
+  };
+
   const handleAddMoto = async () => {
     const adMoto = await addMoto(newMoto);
     setIsActualizo(true);
@@ -66,6 +97,9 @@ const AddMotoForm = () => {
       cilindraje: 0,
       numeroVelocidad: 0,
     });
+
+    // Restablecer el estado de los datos del vehículo seleccionado
+    setSelectedVehicleData(null);
   };
 
   return (
@@ -105,7 +139,7 @@ const AddMotoForm = () => {
             <Select
               label="Modelo"
               value={newMoto.modelo}
-              onChange={handleInputChange("modelo")}
+              onChange={handleSelectChange}
               margin="dense"
               sx={{ minWidth: 120 }}
             >
@@ -129,6 +163,8 @@ const AddMotoForm = () => {
               value={newMoto.kilometraje}
               onChange={handleInputChange("kilometraje")}
               margin="normal"
+              // Deshabilitar el campo si isCheckBoxChecked es false
+              disabled={!isCheckBoxChecked}
             />
           </Box>
           <Box display="flex" gap={1}>
@@ -137,12 +173,15 @@ const AddMotoForm = () => {
               value={newMoto.precio}
               onChange={handleInputChange("precio")}
               margin="normal"
+              // Deshabilitar el campo si isCheckBoxChecked es false
+              disabled={!isCheckBoxChecked}
             />
             <TextField
               label="Cilindraje"
               value={newMoto.cilindraje}
               onChange={handleInputChange("cilindraje")}
               margin="normal"
+              // Deshabilitar el campo si isCheckBoxChecked es false
             />
             <TextField
               label="Número de Velocidad"
@@ -151,6 +190,16 @@ const AddMotoForm = () => {
               margin="normal"
             />
           </Box>
+
+          <Box sx={{ display: "flex", alignItems: "center" }}>
+            <Checkbox
+              checked={isCheckBoxChecked}
+              onChange={handleCheckBoxChange}
+            />
+            <Typography variant="body1">
+              ¿El vehiculo se encuentra usado?
+            </Typography>
+          </Box>
           <Button
             variant="contained"
             color="primary"
@@ -158,8 +207,6 @@ const AddMotoForm = () => {
             disabled={
               newMoto.modelo === "" ||
               newMoto.color === "" ||
-              newMoto.precio === 0 ||
-              newMoto.cilindraje === 0 ||
               newMoto.numeroVelocidad === 0
             }
             sx={{ mt: 2, gridColumn: "span 2" }}

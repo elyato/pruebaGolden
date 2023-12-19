@@ -30,20 +30,12 @@ export const CardViewCarro = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedCarro, setSelectedCarro] = useState<Carro>(null);
   const [cardCount, setCardCount] = useState(0);
-  const [filteredCarros, setFilteredCarros] = useState([]);
+
   const [isEditModalOpen, setEditModalOpen] = useState(false);
 
   useEffect(() => {
     setCardCount(carroData.length);
   }, [carroData]);
-
-  useEffect(() => {
-    if (selectedCarro) {
-      setFilteredCarros([selectedCarro]);
-    } else {
-      setFilteredCarros(carroData);
-    }
-  }, [selectedCarro, carroData]);
 
   const handleOpenModal = (carro: Carro) => {
     setModalOpen(true);
@@ -71,11 +63,6 @@ export const CardViewCarro = () => {
     await actualizarCarro(carroId, { [fieldName]: newValue });
   };
 
-  const options = carroData.map((carro) => ({
-    label: `${carro.modelo} - ID: ${carro.id}`,
-    value: carro,
-  }));
-
   return (
     <>
       <PageHeader
@@ -99,15 +86,6 @@ export const CardViewCarro = () => {
           variant="h2"
         >{`${cardCount} | Publicaciones activas `}</Typography>
 
-        <Autocomplete
-          sx={{ width: 300 }}
-          options={options}
-          getOptionLabel={(option) => option.label}
-          renderInput={(params) => (
-            <TextField {...params} label="Seleccionar Modelo o ID" />
-          )}
-          onChange={(event, value) => setSelectedCarro(value?.value || null)}
-        />
         <Button
           variant="contained"
           component={Link}

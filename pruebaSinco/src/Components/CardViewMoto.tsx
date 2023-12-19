@@ -59,11 +59,6 @@ export const CardView = () => {
     await updateMoto(motoId, { [fieldName]: newValue });
   };
 
-  const options = motoData.map((moto) => ({
-    label: `${moto.modelo} - ID: ${moto.id}`,
-    value: moto,
-  }));
-
   return (
     <>
       <PageHeader
@@ -133,7 +128,7 @@ export const CardView = () => {
               <CardContent>
                 <Box display="flex" gap={1}>
                   <Typography variant="subtitle1">{`Cilindraje:`}</Typography>
-                  <Typography>{` ${moto.cilindraje}`}</Typography>
+                  <Typography>{` ${moto.cilindraje}CC`}</Typography>
                 </Box>
                 <Box display="flex" gap={1}>
                   <Typography variant="subtitle1">{`Color:`}</Typography>

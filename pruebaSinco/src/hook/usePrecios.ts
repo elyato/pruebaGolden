@@ -10,7 +10,6 @@ export const usePrecios = () => {
   const {
     data: dataPrecios = [],
     isLoading: loading,
-    error,
   } = useQuery<Precios[]>("preciosData", async () => {
     const response = await axios.get(apiPrecios);
     return response.data;

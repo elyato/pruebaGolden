@@ -37,6 +37,14 @@ export const ModalCompra = ({
     precio: 0,
     numInstallments: 1,
   });
+  const currentDate = new Date();
+  const formattedDate = currentDate.toLocaleString("es-ES", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 
   const { addCliente } = useClientes();
   const { eliminarCarro } = useFetchCarroData();
@@ -63,6 +71,8 @@ export const ModalCompra = ({
         const newClient = {
           nombreCompleto: textField1Value,
           cedula: textField2Value,
+          fechaCompra: formattedDate,
+          vehiculoComprado: selectedVehicle.modelo,
         };
 
         await addCliente(newClient);
