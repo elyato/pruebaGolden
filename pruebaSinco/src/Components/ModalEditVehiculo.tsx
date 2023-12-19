@@ -2,25 +2,25 @@ import { useState } from "react";
 import { TextField, Typography, Box, Button, Modal } from "@mui/material";
 import { Carro, Moto } from "../interfaces/Data";
 interface porps {
-  selectedMoto: Moto | Carro | null;
+  selectedVehiculo: Moto | Carro | null;
   isEditModalOpen: boolean;
   handleCloseModal: () => void;
-  handleUpdateMoto: (
+  handleUpdateVehiculo: (
     motoId: number,
     fieldName: string,
     newValue: any
   ) => Promise<void>;
 }
 export const ModalEditVehiculo = ({
-  handleUpdateMoto,
-  selectedMoto,
+  handleUpdateVehiculo,
+  selectedVehiculo,
   handleCloseModal,
   isEditModalOpen,
 }: porps) => {
   const [newColor, setNewColor] = useState("");
   const handleConfirmColor = async () => {
-    if (selectedMoto) {
-      await handleUpdateMoto(selectedMoto.id, "color", newColor);
+    if (selectedVehiculo) {
+      await handleUpdateVehiculo(selectedVehiculo.id, "color", newColor);
       setNewColor("");
     }
   };

@@ -35,10 +35,8 @@ const AddMotoForm = () => {
     numeroVelocidad: 0,
   });
 
-  // Nuevo estado para habilitar/deshabilitar Precio y Cilindraje
   const [isCheckBoxChecked, setIsCheckBoxChecked] = useState(false);
 
-  // Nuevo estado para almacenar los datos del vehículo seleccionado
   const [selectedVehicleData, setSelectedVehicleData] =
     useState<Precios | null>(null);
 
@@ -67,7 +65,6 @@ const AddMotoForm = () => {
   const handleSelectChange = (event: React.ChangeEvent<{ value: unknown }>) => {
     const selectedModel = event.target.value as string;
 
-    // Buscar los datos del vehículo seleccionado en dataPrecios
     const selectedData = dataPrecios.find(
       (modelo: Precios) => modelo.modelo === selectedModel
     );

@@ -41,6 +41,38 @@
       "kilometraje": "1000",
       "precio": "1000",
       "id": 4
+    },
+    {
+      "modelo": "Ns200",
+      "color": "2",
+      "kilometraje": 0,
+      "precio": "15000",
+      "cilindraje": 0,
+      "id": 5
+    },
+    {
+      "modelo": "Ns200",
+      "color": "rojo",
+      "kilometraje": "2500000000",
+      "precio": "15000",
+      "cilindraje": 0,
+      "id": 6
+    },
+    {
+      "modelo": "Ns200",
+      "color": "rojo",
+      "kilometraje": "100",
+      "precio": "2500000000",
+      "cilindraje": 0,
+      "id": 7
+    },
+    {
+      "modelo": "Sail",
+      "color": "rojo",
+      "kilometraje": "100",
+      "precio": 20000,
+      "cilindraje": 0,
+      "id": 8
     }
   ],
   "motos": [
@@ -344,6 +376,20 @@
       "fechaCompra": "19/12/23, 11:24",
       "vehiculoComprado": "MT-09",
       "id": 27
+    },
+    {
+      "nombreCompleto": "el yato",
+      "cedula": "2000",
+      "fechaCompra": "19/12/23, 16:26",
+      "vehiculoComprado": "Ns200",
+      "id": 28
+    },
+    {
+      "nombreCompleto": "Juan Paulo Arango",
+      "cedula": "121313",
+      "fechaCompra": "19/12/23, 16:26",
+      "vehiculoComprado": "Sail",
+      "id": 29
     }
   ],
   "precios": [

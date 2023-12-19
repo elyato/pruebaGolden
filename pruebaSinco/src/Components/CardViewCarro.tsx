@@ -24,7 +24,7 @@ import { Carro } from "../interfaces/Data";
 import { ModalEditVehiculo } from "./ModalEditVehiculo";
 
 export const CardViewCarro = () => {
-  const data = useFetchCarroData(); // Use the car data hook
+  const data = useFetchCarroData();
   const { carroData, actualizarCarro } = data;
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -152,10 +152,10 @@ export const CardViewCarro = () => {
         vehicleType="carro"
       />
       <ModalEditVehiculo
-        selectedMoto={selectedCarro}
+        selectedVehiculo={selectedCarro}
         isEditModalOpen={isEditModalOpen}
         handleCloseModal={handleCloseModalEdit}
-        handleUpdateMoto={handleUpdateField}
+        handleUpdateVehiculo={handleUpdateField}
       />
     </>
   );

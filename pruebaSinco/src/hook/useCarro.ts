@@ -28,7 +28,6 @@ const useFetchCarroData = () => {
     // <Alert title={alerta} />;
   };
 
-  // Crear una mutación para actualizar datos de carros
   const actualizarCarroMutacion = useMutation(
     ({
       carroId,
@@ -44,7 +43,6 @@ const useFetchCarroData = () => {
     }
   );
 
-  // Crear una mutación para agregar nuevos datos de carros
   const agregarCarroMutacion = useMutation(
     (nuevosDatosCarro: Omit<Carro, "id">) =>
       axios.post(apiCarroUrl, nuevosDatosCarro),
@@ -56,16 +54,38 @@ const useFetchCarroData = () => {
   );
 
   const agregarCarro = async (nuevosDatosCarro: Omit<Carro, "id">) => {
+    if (carroData.length >= 9) {
+      return {
+        estado: false,
+        mensaje: "No se pueden agregar más de 9 carros.",
+      };
+    }
+
     try {
-      if (carroData.length <= 9) {
-        await agregarCarroMutacion.mutateAsync(nuevosDatosCarro);
-        return true;
+      if (nuevosDatosCarro.precio > 250000000) {
+        console.error(
+          "No se permite autos con un precio superior a 250.000.000"
+        );
+        return {
+          estado: false,
+          mensaje: "No se permite autos con un precio superior a 250.000.000",
+        };
       }
+
+      // Si llega hasta aquí, no hay errores, entonces se agrega el carro
+      await agregarCarroMutacion.mutateAsync(nuevosDatosCarro);
+
+      return {
+        estado: true,
+        mensaje: "Se agregó correctamente",
+      };
     } catch (error) {
       console.error("Error al agregar el carro:", error);
-      return false;
+      return {
+        estado: false,
+        mensaje: "Error al agregar el carro",
+      };
     }
-    return false;
   };
 
   const actualizarCarro = async (

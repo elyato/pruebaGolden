@@ -155,10 +155,10 @@ export const CardView = () => {
         vehicleType="moto"
       />
       <ModalEditVehiculo
-        selectedMoto={selectedMoto}
+        selectedVehiculo={selectedMoto}
         isEditModalOpen={isEditModalOpen}
         handleCloseModal={handleCloseModalEdit}
-        handleUpdateMoto={handleUpdateField}
+        handleUpdateVehiculo={handleUpdateField}
       />
     </>
   );
