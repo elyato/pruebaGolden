@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { Dispatch, FC, SetStateAction, useState } from "react";
 import {
   Button,
   TableContainer,
@@ -7,18 +7,21 @@ import {
   TableRow,
   TableCell,
   TableBody,
+  Box,
 } from "@mui/material";
 
 interface CuotasTableProps {
   valor: number;
   numCuotas: number;
   interes: number;
+  setIsBuyingInInstallments: Dispatch<SetStateAction<boolean>>;
 }
 
-export const CuotasTable: React.FC<CuotasTableProps> = ({
+export const CuotasTable: FC<CuotasTableProps> = ({
   valor,
   numCuotas,
   interes,
+  setIsBuyingInInstallments,
 }) => {
   const [cuotasData, setCuotasData] = useState([]);
 
@@ -43,26 +46,31 @@ export const CuotasTable: React.FC<CuotasTableProps> = ({
 
       cuotas.push({
         cuota: i,
-        cuotaPrincipal: redondear(cuotaPrincipal, 2),
+        cuotaInicial: redondear(cuotaInicial, 2),
         saldoPendiente: redondear(saldoPendiente, 2),
         cuotaInteres: redondear(cuotaInteres, 2),
-        cuotaInicial: redondear(cuotaInicial, 2),
+        cuotaPrincipal: redondear(cuotaPrincipal, 2),
       });
     }
 
     cuotas.push({
       cuota: "Total",
-      cuotaPrincipal: redondear(valor, 2),
       cuotaInteres: redondear(totalInteres, 2),
       cuotaInicial: redondear(cuotaInicial, 2),
+      cuotaPrincipal: redondear(valor + totalInteres, 2),
     });
 
     setCuotasData(cuotas);
   };
 
   return (
-    <>
-      <Button onClick={calcularCuotas}>Calcular Cuotas</Button>
+    <Box display="flex" flexDirection="column">
+      <Box display="flex" justifyContent="space-between">
+        <Button onClick={calcularCuotas}>Calcular Cuotas</Button> 
+        <Button onClick={() => setIsBuyingInInstallments(false)}>
+          Cancelar
+        </Button>
+      </Box>
       <TableContainer sx={{ width: "100%" }}>
         <Table>
           <TableHead>
@@ -87,6 +95,6 @@ export const CuotasTable: React.FC<CuotasTableProps> = ({
           </TableBody>
         </Table>
       </TableContainer>
-    </>
+    </Box>
   );
 };

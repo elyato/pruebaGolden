@@ -44,17 +44,26 @@ const useFetchMotoData = () => {
   );
 
   const addMoto = async (newMotoData: Omit<Moto, "id">) => {
-    debugger;
+    if (motoData && motoData.length >= 15) {
+      console.error("Error: No se pueden agregar más de 15 motos.");
+      return {
+        estado: false,
+        mensaje: "No se pueden agregar más de 15 motos.",
+      };
+    }
     try {
       if (newMotoData.cilindraje > 400) {
         console.error(
           "Error: No se permite agregar motos con cilindraje superior a 400cc."
         );
-        return false;
+        return {
+          estado: false,
+          mensaje:
+            "No se permite agregar motos con cilindraje superior a 400cc",
+        };
       }
       if (newMotoData.kilometraje !== 0) {
         const preciosData = queryClient.getQueryData<Precios[]>("preciosData");
-        console.log(preciosData);
 
         if (preciosData && preciosData.length > 0) {
           const modeloBase = preciosData.find(
@@ -68,18 +77,27 @@ const useFetchMotoData = () => {
               console.error(
                 "Error: El precio de la moto no puede ser igual al 85% del precio base."
               );
-              return false;
+              return {
+                estado: false,
+                mensaje:
+                  "El precio de la moto no puede ser igual al 85% del precio base.",
+              };
             }
           }
         }
       }
 
-      // Si todo está bien, agrega la moto
       await addMotoMutation.mutateAsync(newMotoData);
-      return true;
+      return {
+        estado: true,
+        mensaje: "Se agrego Correctamente",
+      };
     } catch (error) {
       console.error("Error al agregar la moto:", error);
-      return false;
+      return {
+        estado: false,
+        mensaje: "No se pudo registrar la moto",
+      };
     }
   };
 

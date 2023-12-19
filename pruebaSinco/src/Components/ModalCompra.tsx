@@ -13,10 +13,10 @@ import { useClientes } from "../hook/useClientes";
 import { Carro, Moto } from "../interfaces/Data";
 import useFetchMotoData from "../hook/useMoto";
 import useFetchCarroData from "../hook/useCarro";
-import { CuotasTable } from "./TablaDecuentas";
+import { CuotasTable } from "./Tablas/TablaDecuentas";
 
 interface Props {
-  selectedVehicle: Carro | Moto;
+  selectedVehicle: Carro | Moto | null;
   modalOpen: boolean;
   handleCloseModal: () => void;
   vehicleType: "moto" | "carro";
@@ -146,27 +146,28 @@ export const ModalCompra = ({
           </Box>
           {isBuyingInInstallments && (
             <>
-              <Typography variant="subtitle1">Compra a cuotas</Typography>
-              <Typography>Precio: ${installmentsFormData.precio}</Typography>
-              <TextField
-                label="Número de coutas"
-                type="number"
-                value={installmentsFormData.numInstallments}
-                onChange={handleInstallmentsFormChange("numInstallments")}
-                fullWidth
-                margin="dense"
-              />
-              <Box display="flex" justifyContent="space-between">
-                <Button onClick={() => setIsBuyingInInstallments(false)}>
-                  Cancelar
-                </Button>
-
-                <CuotasTable
-                  interes={0.5}
-                  numCuotas={installmentsFormData.numInstallments}
-                  valor={installmentsFormData.precio}
+              <Box width={500} display="flex">
+                <Box width={200}>
+                  <Typography variant="subtitle1">Compra a cuotas:</Typography>
+                  <Typography>
+                    Precio: ${installmentsFormData.precio}
+                  </Typography>
+                </Box>
+                <TextField
+                  label="Número de coutas"
+                  type="number"
+                  value={installmentsFormData.numInstallments}
+                  onChange={handleInstallmentsFormChange("numInstallments")}
+                  fullWidth
+                  margin="dense"
                 />
               </Box>
+              <CuotasTable
+                setIsBuyingInInstallments={setIsBuyingInInstallments}
+                interes={0.5}
+                numCuotas={installmentsFormData.numInstallments}
+                valor={installmentsFormData.precio}
+              />
             </>
           )}
         </Stack>

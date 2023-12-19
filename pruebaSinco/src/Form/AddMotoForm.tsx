@@ -12,12 +12,16 @@ import { PageHeader, ToastNotification } from "@sinco/react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Link } from "react-router-dom";
 import useFetchMotoData from "../hook/useMoto";
+import { respuestaPeticion } from "../interfaces/Data";
 
 const AddMotoForm = () => {
   const { addMoto } = useFetchMotoData();
+  const [respuestaPeticion, setRespuestaPeticion] =
+    useState<respuestaPeticion>();
   const [isActualizo, setIsActualizo] = useState(false);
   const [newMoto, setNewMoto] = useState({
     modelo: "",
+    image: "",
     color: "",
     kilometraje: 0,
     precio: 0,
@@ -45,11 +49,13 @@ const AddMotoForm = () => {
 
   const handleAddMoto = async () => {
     const adMoto = await addMoto(newMoto);
-    setIsActualizo(adMoto);
+    setIsActualizo(true);
+    setRespuestaPeticion(adMoto);
 
     setNewMoto({
       modelo: "",
       color: "",
+      image: "",
       kilometraje: 0,
       precio: 0,
       cilindraje: 0,
@@ -80,11 +86,11 @@ const AddMotoForm = () => {
             alignItems: "center",
           }}
         >
-          {isActualizo && (
+          {isActualizo && respuestaPeticion && (
             <ToastNotification
-              title="Se agregó correctamente"
+              title={respuestaPeticion?.mensaje}
               time={5}
-              type="success"
+              type={respuestaPeticion?.estado ? "success" : "error"}
             />
           )}
           <Typography variant="body1">

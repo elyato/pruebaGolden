@@ -4,8 +4,8 @@ export interface Moto {
   color: string;
   kilometraje: number;
   precio: number;
-  cilindraje?: number;
-  numeroVelocidad?: number;
+  cilindraje: number;
+  numeroVelocidad: number;
   image: string;
 }
 
@@ -15,8 +15,6 @@ export interface Carro {
   color: string;
   kilometraje: number;
   precio: number;
-  cilindraje?: string;
-  numeroVelocidad?: number;
   image: string;
 }
 
@@ -29,4 +27,15 @@ export interface Precios {
   fechaRegistro: string;
   cilindraje?: string;
   numeroVelocidad?: number;
+}
+
+export interface respuestaPeticion {
+  estado: boolean;
+  mensaje: string;
+}
+
+export interface Cliente {
+  id: 0;
+  nombreCompleto: string;
+  cedula: string;
 }

@@ -1,11 +1,12 @@
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Button, Stack, Typography } from "@mui/material";
 import TwoWheelerIcon from "@mui/icons-material/TwoWheeler";
 import { PageHeader } from "@sinco/react";
-import { TablaPrecios } from "./Components/TablaPrecios";
+import { TablaPrecios } from "./Components/Tablas/TablaPrecios";
 import { CardSelecVehiculo } from "./Components/CardSelecVehiculo";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import { useState } from "react";
 import { FormularioModelo } from "./FormularioModelo";
+import { Link } from "react-router-dom";
 export const Concesionario = () => {
   const [isNewModelo, setIsNewModelo] = useState(false);
 
@@ -20,6 +21,12 @@ export const Concesionario = () => {
             <img src="./src/assets/LogoConce.svg" alt="" />
             <Typography variant="h3">YATO MOTORS</Typography>
           </Box>
+        }
+        title=""
+        actions={
+          <Button variant="contained" color="secondary" component={Link} to="/clientes" >
+            Ver Clientes
+          </Button>
         }
       />
       <Box

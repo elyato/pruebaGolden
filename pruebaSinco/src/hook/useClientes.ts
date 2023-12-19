@@ -1,17 +1,15 @@
 import axios from "axios";
 import { useMutation, useQueryClient, useQuery } from "react-query";
+import { Cliente } from "../interfaces/Data";
 
-interface Cliente {
-  nombreCompleto: string;
-  cedula: string;
-}
+
 
 export const useClientes = () => {
   const apiClientes = "http://localhost:3000/clientes";
 
   const queryClient = useQueryClient();
   const {
-    data: dalaClient = [],
+    data: dataClientes = [],
     isLoading: loading,
     error,
   } = useQuery<Cliente[]>({
@@ -41,7 +39,7 @@ export const useClientes = () => {
     }
   };
 
-  return { loading, error, addCliente };
+  return { dataClientes, loading, error, addCliente };
 };
 
 export default useClientes;

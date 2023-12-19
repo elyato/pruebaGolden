@@ -4,6 +4,7 @@ import AddMotoForm from "../Form/AddMotoForm";
 import { CardView } from "../Components/CardViewMoto";
 import { CardViewCarro } from "../Components/CardViewCarro";
 import { AddCarroForm } from "../Form/AddCarroForm";
+import TablaClientes from "../Components/Tablas/TablaClientes";
 
 const router = createHashRouter([
   {
@@ -26,6 +27,10 @@ const router = createHashRouter([
   {
     path: "/carro",
     element: <CardViewCarro />,
+  },
+  {
+    path: "/clientes",
+    element: <TablaClientes />,
   },
 ]);
 

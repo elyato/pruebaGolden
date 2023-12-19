@@ -17,8 +17,8 @@ import {
   CardHeader,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import { usePrecios } from "../hook/usePrecios";
-import { Precios } from "../interfaces/Data";
+import { usePrecios } from "../../hook/usePrecios";
+import { Precios } from "../../interfaces/Data";
 
 export const TablaPrecios = ({ handleShowForm }) => {
   const data = usePrecios();
@@ -93,7 +93,9 @@ export const TablaPrecios = ({ handleShowForm }) => {
           </Table>
         </TableContainer>
         <CardActions>
-          <Button variant="contained" onClick={handleShowForm}>Agregar nuevo modelo</Button>
+          <Button variant="contained" onClick={handleShowForm}>
+            Agregar nuevo modelo
+          </Button>
         </CardActions>
       </Card>
     </>

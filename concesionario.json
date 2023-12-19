@@ -143,6 +143,26 @@
       "cilindraje": "300",
       "numeroVelocidad": "5",
       "id": 27
+    },
+    {
+      "modelo": "nsita",
+      "color": "rosado",
+      "image": "",
+      "kilometraje": "100",
+      "precio": "100",
+      "cilindraje": "200",
+      "numeroVelocidad": "5",
+      "id": 28
+    },
+    {
+      "modelo": "asd",
+      "image": "",
+      "color": "asd",
+      "kilometraje": "100",
+      "precio": "1000",
+      "cilindraje": "200",
+      "numeroVelocidad": "5",
+      "id": 29
     }
   ],
   "clientes": [
@@ -322,19 +342,23 @@
   "Modelos": [
     {
       "id": 0,
-      "Modelo": "Sedan"
+      "nombre": "Sedan"
     },
     {
       "id": 1,
-      "Modelo": "MT-09"
+      "nombre": "MT-09"
     },
     {
       "id": 2,
-      "Modelo": "MT-03"
+      "nombre": "MT-03"
     },
     {
       "id": 3,
-      "Modelo": "Renault-3"
+      "nombre": "Renault-3"
+    },
+    {
+      "id": 4,
+      "nombre": "Ns200"
     }
   ]
 }

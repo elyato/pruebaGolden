@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 import {
-  Autocomplete,
-  TextField,
   Card,
   CardHeader,
   CardMedia,
@@ -22,28 +20,20 @@ import EditIcon from "@mui/icons-material/Edit";
 import { ModalCompra } from "./ModalCompra";
 import { Link } from "react-router-dom";
 import { ModalEditVehiculo } from "./ModalEditVehiculo";
-import { Moto} from "../interfaces/Data";
+import { Moto } from "../interfaces/Data";
 
 export const CardView = () => {
   const data = useFetchMotoData();
   const { motoData, updateMoto } = data;
 
   const [modalOpen, setModalOpen] = useState(false);
-  const [selectedMoto, setSelectedMoto] = useState(null);
+  const [selectedMoto, setSelectedMoto] = useState<Moto | null>(null);
   const [cardCount, setCardCount] = useState(0);
-  const [filteredMotos, setFilteredMotos] = useState([]);
+
   const [isEditModalOpen, setEditModalOpen] = useState(false);
   useEffect(() => {
     setCardCount(motoData.length);
   }, [motoData]);
-
-  useEffect(() => {
-    if (selectedMoto) {
-      setFilteredMotos([selectedMoto]);
-    } else {
-      setFilteredMotos(motoData);
-    }
-  }, [selectedMoto, motoData]);
 
   const handleOpenModal = (moto: Moto) => {
     setModalOpen(true);
@@ -97,15 +87,6 @@ export const CardView = () => {
           variant="h2"
         >{`${cardCount} | Publicaciones activas `}</Typography>
 
-        <Autocomplete
-          sx={{ width: 300 }}
-          options={options}
-          getOptionLabel={(option) => option.label}
-          renderInput={(params) => (
-            <TextField {...params} label="Seleccionar Modelo o ID" />
-          )}
-          onChange={(event, value) => setSelectedMoto(value?.value || null)}
-        />
         <Button
           variant="contained"
           component={Link}
