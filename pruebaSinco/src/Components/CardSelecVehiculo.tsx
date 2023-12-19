@@ -22,7 +22,7 @@ export const CardSelecVehiculo = ({
   icon,
 }: props) => {
   return (
-    <Card sx={{ margin: 2, width: 250 }}>
+    <Card sx={{ margin: 2, width: 250,padding:2 }}>
       <CardHeader title={title} titleTypographyProps="text.primary" />
       <CardMedia component="img" alt="Concesionario Image" image={image} />
       <CardActions sx={{ justifyContent: "end" }}>

@@ -72,7 +72,6 @@ const useFetchCarroData = () => {
         };
       }
 
-      // Si llega hasta aquí, no hay errores, entonces se agrega el carro
       await agregarCarroMutacion.mutateAsync(nuevosDatosCarro);
 
       return {

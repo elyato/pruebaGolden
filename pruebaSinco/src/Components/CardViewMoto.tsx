@@ -10,6 +10,7 @@ import {
   Typography,
   Box,
   Button,
+  Stack,
 } from "@mui/material";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -92,61 +93,67 @@ export const CardView = () => {
           Agregar Vehículo
         </Button>
       </Box>
-      <Grid container spacing={2} marginTop={2}>
-        {motoData.map((moto, index) => (
-          <Grid item key={index} xs={12} sm={6} md={4}>
-            <Card key={index}>
-              <CardHeader
-                title={`Vehiculo: ${moto.modelo}`}
-                action={
-                  <IconButton onClick={() => handleOpenModalEdit(moto)}>
-                    <EditIcon />
-                  </IconButton>
-                }
-              />
-              <CardMedia
-                component="img"
-                image={moto.image}
-                sx={{ width: "auto", height: "200px" }}
-                alt={`Imagen de ${moto.modelo}`}
-              />
-              <CardActions>
-                <Box display="flex" justifyContent="space-between" width="100%">
-                  <Typography variant="subtitle1" color="text.primary">
-                    {`Precio: ${moto.precio}`}
-                  </Typography>
-                  <Button
-                    color="success"
-                    variant="contained"
-                    size="small"
-                    onClick={() => handleOpenModal(moto)}
+      <Stack alignItems="center" justifyContent="center">
+        <Grid container spacing={6} marginTop={2} xs={9}>
+          {motoData.map((moto, index) => (
+            <Grid item key={index} xs={12} sm={6} md={4}>
+              <Card key={index}>
+                <CardHeader
+                  title={`Vehiculo: ${moto.modelo}`}
+                  action={
+                    <IconButton onClick={() => handleOpenModalEdit(moto)}>
+                      <EditIcon />
+                    </IconButton>
+                  }
+                />
+                <CardMedia
+                  component="img"
+                  image={moto.image}
+                  sx={{ width: "auto", height: "200px" }}
+                  alt={`Imagen de ${moto.modelo}`}
+                />
+                <CardActions>
+                  <Box
+                    display="flex"
+                    justifyContent="space-between"
+                    width="100%"
                   >
-                    Vender
-                  </Button>
-                </Box>
-              </CardActions>
-              <CardContent>
-                <Box display="flex" gap={1}>
-                  <Typography variant="subtitle1">{`Cilindraje:`}</Typography>
-                  <Typography>{` ${moto.cilindraje}CC`}</Typography>
-                </Box>
-                <Box display="flex" gap={1}>
-                  <Typography variant="subtitle1">{`Color:`}</Typography>
-                  <Typography>{` ${moto.color}`}</Typography>
-                </Box>
-                <Box display="flex" gap={1}>
-                  <Typography variant="subtitle1">{`Número de veloocidad:`}</Typography>
-                  <Typography>{` ${moto.numeroVelocidad}`}</Typography>
-                </Box>
-                <Box display="flex" gap={1}>
-                  <Typography variant="subtitle1">{`Kilometraje:`}</Typography>
-                  <Typography>{` ${moto.kilometraje}`}</Typography>
-                </Box>
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
+                    <Typography variant="subtitle1" color="text.primary">
+                      {`Precio: ${moto.precio}`}
+                    </Typography>
+                    <Button
+                      color="success"
+                      variant="contained"
+                      size="small"
+                      onClick={() => handleOpenModal(moto)}
+                    >
+                      Vender
+                    </Button>
+                  </Box>
+                </CardActions>
+                <CardContent>
+                  <Box display="flex" gap={1}>
+                    <Typography variant="subtitle1">{`Cilindraje:`}</Typography>
+                    <Typography>{` ${moto.cilindraje}CC`}</Typography>
+                  </Box>
+                  <Box display="flex" gap={1}>
+                    <Typography variant="subtitle1">{`Color:`}</Typography>
+                    <Typography>{` ${moto.color}`}</Typography>
+                  </Box>
+                  <Box display="flex" gap={1}>
+                    <Typography variant="subtitle1">{`Número de veloocidad:`}</Typography>
+                    <Typography>{` ${moto.numeroVelocidad}`}</Typography>
+                  </Box>
+                  <Box display="flex" gap={1}>
+                    <Typography variant="subtitle1">{`Kilometraje:`}</Typography>
+                    <Typography>{` ${moto.kilometraje}`}</Typography>
+                  </Box>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Stack>
 
       <ModalCompra
         modalOpen={modalOpen}
