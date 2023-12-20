@@ -62,7 +62,7 @@ const useFetchMotoData = () => {
 
       if (newMotoData.kilometraje !== 0) {
         const preciosData = queryClient.getQueryData<Precios[]>("preciosData");
-
+        debugger;
         if (preciosData && preciosData.length > 0) {
           const modeloBase = preciosData.find(
             (precio) => precio.modelo === newMotoData.modelo
@@ -113,6 +113,10 @@ const useFetchMotoData = () => {
   const updateMoto = async (motoId: number, newData: Partial<Moto>) => {
     try {
       await updateMotoMutation.mutateAsync({ motoId, newData });
+      return {
+        estado: true,
+        mensaje: "Se actualizo correctamente el color de la moto",
+      };
     } catch (error) {
       console.error("Error al actualizar el color de la moto:", error);
     }

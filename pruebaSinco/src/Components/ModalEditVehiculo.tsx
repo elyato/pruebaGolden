@@ -1,27 +1,31 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { TextField, Typography, Box, Button, Modal } from "@mui/material";
 import { Carro, Moto } from "../interfaces/Data";
 interface porps {
   selectedVehiculo: Moto | Carro | null;
   isEditModalOpen: boolean;
-  handleCloseModal: () => void;
+  handleCloseModal: (p: boolean) => void;
   handleUpdateVehiculo: (
     motoId: number,
     fieldName: string,
     newValue: any
   ) => Promise<void>;
+  setIsActualizo: Dispatch<SetStateAction<boolean>>;
 }
 export const ModalEditVehiculo = ({
   handleUpdateVehiculo,
   selectedVehiculo,
   handleCloseModal,
   isEditModalOpen,
+  setIsActualizo,
 }: porps) => {
   const [newColor, setNewColor] = useState("");
   const handleConfirmColor = async () => {
     if (selectedVehiculo) {
       await handleUpdateVehiculo(selectedVehiculo.id, "color", newColor);
       setNewColor("");
+      handleCloseModal(false);
+      setIsActualizo(true);
     }
   };
   return (
@@ -56,7 +60,7 @@ export const ModalEditVehiculo = ({
           <Button
             color="primary"
             onClick={() => {
-              handleCloseModal();
+              handleCloseModal(false);
             }}
           >
             Cancelar

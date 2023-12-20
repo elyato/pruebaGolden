@@ -54,7 +54,7 @@ const useFetchCarroData = () => {
   );
 
   const agregarCarro = async (nuevosDatosCarro: Omit<Carro, "id">) => {
-    if (carroData.length >= 9) {
+    if (carroData.length >= 10) {
       return {
         estado: false,
         mensaje: "No se pueden agregar más de 9 carros.",

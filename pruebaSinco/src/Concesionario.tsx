@@ -1,4 +1,4 @@
-import { Box, Button, Stack, Typography, TextField, Card, CardHeader } from "@mui/material";
+import { Box, Button, Stack, Typography, TextField, Card, CardHeader, MenuItem, Select } from "@mui/material";
 import TwoWheelerIcon from "@mui/icons-material/TwoWheeler";
 import { PageHeader } from "@sinco/react";
 import { TablaModelos } from "./Components/Tablas/TablaModelos";
@@ -92,12 +92,14 @@ export const Concesionario = () => {
                 onChange={handleInputChange("precio")}
                 margin="normal"
               />
-              <TextField
+              <Select
                 label="Tipo"
                 value={modeloData.tipo}
                 onChange={handleInputChange("tipo")}
-                margin="normal"
-              />
+              >
+                <MenuItem value="carro">Carro</MenuItem>
+                <MenuItem value="moto">Moto</MenuItem>
+              </Select>
 
               <Button variant="contained" onClick={handleAddModelo}>
                 Agregar Modelo

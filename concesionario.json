@@ -78,7 +78,7 @@
   "motos": [
     {
       "modelo": "Ns200",
-      "color": "rojo",
+      "color": "rojito",
       "kilometraje": "0",
       "precio": "2000",
       "cilindraje": "200cc",
@@ -88,7 +88,7 @@
     },
     {
       "modelo": "maria",
-      "color": "rojo",
+      "color": "morado",
       "kilometraje": "0",
       "precio": "200",
       "cilindraje": "300cc",
@@ -159,15 +159,6 @@
       "id": 25
     },
     {
-      "modelo": "ns400",
-      "color": "rojo",
-      "kilometraje": "0",
-      "precio": "1000000",
-      "cilindraje": "100cc",
-      "numeroVelocidad": "5",
-      "id": 26
-    },
-    {
       "modelo": "ns",
       "color": "rojo",
       "kilometraje": "100",
@@ -189,7 +180,7 @@
     {
       "modelo": "CR5",
       "image": "",
-      "color": "rojo",
+      "color": "azul",
       "kilometraje": 0,
       "precio": "2000",
       "cilindraje": "200",
@@ -197,22 +188,22 @@
       "id": 29
     },
     {
-      "modelo": "MT-09",
-      "color": "rojito",
+      "modelo": "Ns160",
       "image": "",
+      "color": "rojo",
       "kilometraje": 0,
-      "precio": 20000,
-      "cilindraje": "200",
+      "precio": "10000",
+      "cilindraje": "100",
       "numeroVelocidad": "5",
       "id": 30
     },
     {
-      "modelo": "MT-09",
-      "color": "rosasdo",
+      "modelo": "Ns160",
+      "color": "rojo",
       "image": "",
       "kilometraje": 0,
-      "precio": 20000,
-      "cilindraje": "100",
+      "precio": "10000",
+      "cilindraje": "200",
       "numeroVelocidad": "5",
       "id": 31
     }
@@ -420,6 +411,27 @@
       "fechaCompra": "19/12/23, 16:26",
       "vehiculoComprado": "Sail",
       "id": 29
+    },
+    {
+      "nombreCompleto": "Verde biche",
+      "cedula": "123",
+      "fechaCompra": "20/12/23, 08:44",
+      "vehiculoComprado": "MT-09",
+      "id": 30
+    },
+    {
+      "nombreCompleto": "Golden",
+      "cedula": "987",
+      "fechaCompra": "20/12/23, 08:44",
+      "vehiculoComprado": "MT-09",
+      "id": 31
+    },
+    {
+      "nombreCompleto": "santiago rios mi amor",
+      "cedula": "6576760",
+      "fechaCompra": "20/12/23, 09:50",
+      "vehiculoComprado": "ns400",
+      "id": 32
     }
   ],
   "precios": [

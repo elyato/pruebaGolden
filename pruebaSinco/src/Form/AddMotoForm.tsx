@@ -25,7 +25,6 @@ const AddMotoForm = () => {
   const [respuestaPeticion, setRespuestaPeticion] =
     useState<RespuestaPeticion>();
   const [isActualizo, setIsActualizo] = useState(false);
-  console.log(isActualizo);
 
   const [newMoto, setNewMoto] = useState({
     modelo: "",

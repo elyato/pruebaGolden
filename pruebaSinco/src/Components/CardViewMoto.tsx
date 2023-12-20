@@ -15,13 +15,13 @@ import {
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
-import { PageHeader } from "@sinco/react";
+import { PageHeader, ToastNotification } from "@sinco/react";
 import useFetchMotoData from "../hook/useMoto";
 import EditIcon from "@mui/icons-material/Edit";
 import { ModalCompra } from "./ModalCompra";
 import { Link } from "react-router-dom";
 import { ModalEditVehiculo } from "./ModalEditVehiculo";
-import { Moto } from "../interfaces/Data";
+import { Moto, RespuestaPeticion } from "../interfaces/Data";
 
 export const CardView = () => {
   const data = useFetchMotoData();
@@ -30,7 +30,9 @@ export const CardView = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedMoto, setSelectedMoto] = useState<Moto | null>(null);
   const [cardCount, setCardCount] = useState(0);
-
+  const [isActualizo, setIsActualizo] = useState(false);
+  const [respuestaPeticion, setRespuestaPeticion] =
+    useState<RespuestaPeticion>();
   const [isEditModalOpen, setEditModalOpen] = useState(false);
   useEffect(() => {
     setCardCount(motoData.length);
@@ -57,8 +59,18 @@ export const CardView = () => {
     fieldName: string,
     newValue: any
   ) => {
-    await updateMoto(motoId, { [fieldName]: newValue });
+    const motoActualizada = await updateMoto(motoId, {
+      [fieldName]: newValue,
+    });
+    setRespuestaPeticion(motoActualizada);
   };
+   useEffect(() => {
+     const timeoutId = setTimeout(() => {
+       setIsActualizo(false);
+     }, 3000);
+
+     return () => clearTimeout(timeoutId);
+   }, [isActualizo]);
 
   return (
     <>
@@ -95,6 +107,13 @@ export const CardView = () => {
       </Box>
       <Stack alignItems="center" justifyContent="center">
         <Grid container spacing={6} marginTop={2} xs={9}>
+          {isActualizo && respuestaPeticion && (
+            <ToastNotification
+              time={3}
+              title={respuestaPeticion.mensaje}
+              type={respuestaPeticion.estado ? "success" : "error"}
+            />
+          )}
           {motoData.map((moto, index) => (
             <Grid item key={index} xs={12} sm={6} md={4}>
               <Card key={index}>
@@ -108,7 +127,7 @@ export const CardView = () => {
                 />
                 <CardMedia
                   component="img"
-                  image={moto.image}
+                  image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkCPJhkMJEvvA3AoeFMc--WofmfMDUhCXYMg&usqp=CAU"
                   sx={{ width: "auto", height: "200px" }}
                   alt={`Imagen de ${moto.modelo}`}
                 />
@@ -166,6 +185,7 @@ export const CardView = () => {
         isEditModalOpen={isEditModalOpen}
         handleCloseModal={handleCloseModalEdit}
         handleUpdateVehiculo={handleUpdateField}
+        setIsActualizo={setIsActualizo}
       />
     </>
   );
