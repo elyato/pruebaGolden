@@ -1,13 +1,32 @@
-import { Box, Button, Stack, Typography } from "@mui/material";
+import { Box, Button, Stack, Typography, TextField, Card, CardHeader } from "@mui/material";
 import TwoWheelerIcon from "@mui/icons-material/TwoWheeler";
 import { PageHeader } from "@sinco/react";
-import { TablaPrecios } from "./Components/Tablas/TablaPrecios";
+import { TablaModelos } from "./Components/Tablas/TablaModelos";
 import { CardSelecVehiculo } from "./Components/CardSelecVehiculo";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { usePrecios } from "./hook/usePrecios";
 export const Concesionario = () => {
   const [isNewModelo, setIsNewModelo] = useState(false);
+  const { addModelo } = usePrecios();
+  const [modeloData, setModeloData] = useState({
+    modelo: "",
+    precio: 0,
+    fechaRegistro: "",
+    tipo: "",
+  });
+
+  const handleInputChange = (field) => (event) => {
+    setModeloData((prevData) => ({
+      ...prevData,
+      [field]: event.target.value,
+    }));
+  };
+
+  const handleAddModelo = () => {
+    addModelo(modeloData);
+  };
 
   const handleShowForm = () => {
     setIsNewModelo(true);
@@ -57,7 +76,34 @@ export const Concesionario = () => {
           />
         </Stack>
         <Stack height="100%" gap={2}>
-          <TablaPrecios handleShowForm={handleShowForm} />
+          <TablaModelos handleShowForm={handleShowForm} />
+          {isNewModelo && (
+            <Card>
+              <CardHeader title="Agregar nuevo modelo" />
+              <TextField
+                label="Modelo"
+                value={modeloData.modelo}
+                onChange={handleInputChange("modelo")}
+                margin="normal"
+              />
+              <TextField
+                label="Precio"
+                value={modeloData.precio}
+                onChange={handleInputChange("precio")}
+                margin="normal"
+              />
+              <TextField
+                label="Tipo"
+                value={modeloData.tipo}
+                onChange={handleInputChange("tipo")}
+                margin="normal"
+              />
+
+              <Button variant="contained" onClick={handleAddModelo}>
+                Agregar Modelo
+              </Button>
+            </Card>
+          )}
         </Stack>
       </Box>
     </>

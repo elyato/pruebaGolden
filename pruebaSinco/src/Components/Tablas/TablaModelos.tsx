@@ -21,7 +21,11 @@ import SearchIcon from "@mui/icons-material/Search";
 import { usePrecios } from "../../hook/usePrecios";
 import { Precios } from "../../interfaces/Data";
 
-export const TablaPrecios = ({ handleShowForm }) => {
+interface props {
+  handleShowForm: () => void;
+}
+
+export const TablaModelos = ({ handleShowForm }: props) => {
   const { dataPrecios } = usePrecios();
   const [selectedModelo, setSelectedModelo] = useState<Precios | null>(null);
   const [page, setPage] = useState(0);

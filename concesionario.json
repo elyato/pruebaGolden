@@ -498,6 +498,13 @@
       "fechaRegistro": "2023-12-19T14:05:06.111Z",
       "id": 10,
       "tipo": "moto"
+    },
+    {
+      "modelo": "Mazda",
+      "precio": "25000",
+      "fechaRegistro": "2023-12-20 07:58:51",
+      "tipo": "carro",
+      "id": 11
     }
   ]
 }

@@ -89,7 +89,7 @@ const useFetchMotoData = () => {
               return {
                 estado: false,
                 mensaje:
-                  "El precio de la moto no puede ser mayor o igual al precio base cuando el kilometraje es diferente de 0.",
+                  "El precio de una moto usada no puede ser igual o mayor que el de una moto nueva.",
               };
             }
           }
