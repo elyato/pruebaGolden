@@ -20,10 +20,6 @@ const useFetchMotoData = () => {
     },
   });
 
-  const showAlert = (alert = "el vehiculo se agrego correctamente!") => {
-    <Alert title={alert} />;
-  };
-
   const updateMotoMutation = useMutation(
     ({ motoId, newData }: { motoId: number; newData: Partial<Moto> }) =>
       axios.patch(`${apiMotoUrl}/${motoId}`, newData),
@@ -127,7 +123,6 @@ const useFetchMotoData = () => {
     {
       onSuccess: () => {
         queryClient.invalidateQueries("motoData");
-        showAlert("¡El vehículo se eliminó correctamente!");
       },
     }
   );

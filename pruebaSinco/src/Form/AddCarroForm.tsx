@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   TextField,
   Button,
@@ -70,9 +70,11 @@ export const AddCarroForm = () => {
   };
   const handleAddCarro = async () => {
     const addCarro = await agregarCarro(newCarro);
-    setIsActualizo(true);
+    if (addCarro) {
+      setIsActualizo(true);
 
-    setRespuestaPeticion(addCarro);
+      setRespuestaPeticion(addCarro);
+    }
 
     setNewCarro({
       modelo: "",
@@ -82,7 +84,13 @@ export const AddCarroForm = () => {
     });
     setSelectedVehicleData(null);
   };
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setIsActualizo(false);
+    }, 3000);
 
+    return () => clearTimeout(timeoutId);
+  }, [isActualizo]);
   return (
     <>
       <PageHeader

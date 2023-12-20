@@ -10,6 +10,7 @@ import {
   IconButton,
   TablePagination,
   Card,
+  CardHeader,
 } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import useClientes from "../../hook/useClientes";
@@ -46,6 +47,7 @@ const TablaClientes = () => {
         }
       />
       <Card sx={{ width: 800, marginTop: 3 }}>
+        <CardHeader title="Compradores" />
         <TableContainer component={Paper}>
           <Table>
             <TableHead>

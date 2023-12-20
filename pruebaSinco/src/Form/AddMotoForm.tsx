@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   TextField,
   Button,
@@ -25,6 +25,8 @@ const AddMotoForm = () => {
   const [respuestaPeticion, setRespuestaPeticion] =
     useState<RespuestaPeticion>();
   const [isActualizo, setIsActualizo] = useState(false);
+  console.log(isActualizo);
+
   const [newMoto, setNewMoto] = useState({
     modelo: "",
     image: "",
@@ -82,8 +84,11 @@ const AddMotoForm = () => {
 
   const handleAddMoto = async () => {
     const adMoto = await addMoto(newMoto);
-    setIsActualizo(true);
-    setRespuestaPeticion(adMoto);
+
+    if (adMoto) {
+      setRespuestaPeticion(adMoto);
+      setIsActualizo(true);
+    }
 
     setNewMoto({
       modelo: "",
@@ -95,9 +100,16 @@ const AddMotoForm = () => {
       numeroVelocidad: 0,
     });
 
-    // Restablecer el estado de los datos del vehículo seleccionado
     setSelectedVehicleData(null);
   };
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setIsActualizo(false);
+    }, 3000);
+
+    return () => clearTimeout(timeoutId);
+  }, [isActualizo]);
 
   return (
     <>

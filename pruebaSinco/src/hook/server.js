@@ -2,11 +2,12 @@ const jsonServer = require("json-server");
 
 const server = jsonServer.create();
 
-const route = jsonServer.route("concesionario.json");
+const router = jsonServer.route("concesionario.json");
 
-const middlewares = jsonServer.default();
+const middlewares = jsonServer.defaults();
 
 server.use(middlewares);
+server.use(router);
 
 server.get("/informe", (req, res) => {
   const db = router.db.getState();
@@ -37,10 +38,8 @@ function sumarValoresPorTipoYModelo(vehiculos) {
   return sumas;
 }
 
-server.use(route);
-
 const PORT = 3000;
 
 server.listen(PORT, () => {
-console.log(`JSON Server is running on port ${PORT}`);
+  console.log(`JSON Server is running on port ${PORT}`);
 });
